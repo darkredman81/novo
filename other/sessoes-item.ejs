@@ -1,0 +1,130 @@
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Registar Sessão</title>
+	<!-- Bootstrap core CSS-->
+	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom fonts for this template-->
+	<link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<script src="https://use.fontawesome.com/9a14895eb3.js"></script>
+	<!-- Custom styles for this template-->
+	<link href="/css/sb-admin.css" rel="stylesheet">
+	<!-- Custom icons for this template-->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  </head>
+
+	<script type="text/javascript">
+		function removeRecord() {
+			if (confirm('Do you really want to remove the record?')) {
+				window.open("<%= '/sessoes/' + sessao.nome + '/delete'%>")
+			}
+		}
+	</script>
+
+	<h2><%= (isNew) ? '' : 'Registo de nova sessão' %></h2>   
+
+	<% if (errors.length) { %>  
+		<div class="alert alert-danger">
+			<ul>
+			<% for (var e of errors) { %>
+				<li><%= e.msg %></li>
+			<% }%>
+			</ul>
+		</div>	
+	<% } %>	
+	
+	<body class="bg-dark">
+			<div class="container">
+			  
+	<form class="well form-horizontal" action="/sessoes/<%= (isNew) ? 'create' : sessao.nome %>" method="post">
+			
+		
+		  
+			  <div class="card card-register mx-auto mt-5">
+				<div class="card-header">Registar nova Sessão</div>
+				<div class="card-body">
+				  <form>
+				  
+				  <!-- Inserir Nome da Sessão-->
+					<div class="form-group">
+					  <div class="form-row">
+						<label class="col-md-10 control-label">Nome da Sessão</label> 
+						  <div class="col-md-10 inputGroupContainer">
+							  <div class="input-group">
+								  <span class="input-group-addon"><i class="fa fa-user-o" aria-hidden="true"></i></span>
+								  <input name="nome" placeholder="Nome da Sessão" class="form-control" id="nome" type="text" value="<%= sessao.nome %>" required >
+							  </div>
+						  </div>	
+					  </div>
+					</div>
+					
+					<!-- Inserir Dia da Sessão-->
+				 <div class="form-group">
+					  <div class="form-row">
+					  <label class="col-md-10 control-label">Dia da Sessão</label>  
+						  <div class="col-md-10 inputGroupContainer">
+							  <div class="input-group">
+								  <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+								  <input name="dia"  id="dia" placeholder="Dia da Sessão" class="form-control"  type="datetime-local" value="<%= sessao.dia %>" required>
+							  </div>
+						  </div>
+					  </div>	
+				 </div>
+				 
+					<!-- Duração da Sessao-->
+					<div class="form-group">
+						  <div class="form-row">
+						  <label class="col-md-10 control-label">Duração da Sessão</label>  
+							  <div class="col-md-10 inputGroupContainer">
+								  <div class="input-group">
+									  <span class="input-group-addon"><i class="fa fa-university" aria-hidden="true""></i></span>
+									  <input  name="duracao" placeholder="Duração" id="duracao" class="form-control"  type="text" value="<%= sessao.duracao %>" required>
+								  </div>
+							  </div>
+					  </div>
+				  </div>
+				  
+				  
+				 					  
+						  <!-- Sala da sessão-->	
+				  <div class="form-group">
+					  <div class="form-row">
+					<label class="col-md-10 control-label">Sala da Sessao</label>
+					  <div class="col-md-10 selectContainer">
+					  <div class="input-group">
+						  <span class="input-group-addon"><i class="fa fa-briefcase" aria-hidden="true"></i></span>
+					  <select name="sala[]" id = "sala" class="form-control selectpicker" value="<%= sessao.sala %>">
+						<option>Selecione a sala da sessao</option>
+						<option value="Centro Cultural Vila Flor">Centro Cultural Vila Flor</option>
+						<option value="Plataforma das Artes">Plataforma das Artes</option>
+						<option value="São Mamede">São Mamede</option>
+						<option value="Casa da Memória">Casa da Memória</option>
+						</select>
+					</div>
+				  </div>
+			  </div>	
+				  </div>
+				  
+				  
+						  					
+		  <!-- Botão para submeter-->
+		  
+		  <button type="submit" class="btn btn-default">Save</button>
+		  <% if (! isNew) { %>
+		  
+		  <button type="button" class="btn btn-danger" onclick="removeRecord()">Delete</button>
+		  <% } %>
+		
+    	
+	</form>
+	      
+ <!-- Bootstrap core JavaScript-->
+ <script src="/jquery/jquery.min.js"></script>
+ <script src="/popper/popper.min.js"></script>
+ <script src="/bootstrap/js/bootstrap.min.js"></script>
+ <!-- Core plugin JavaScript-->
+ <script src="/js/login_val.js"></script>
+ <script src="/jquery-easing/jquery.easing.min.js"></script>

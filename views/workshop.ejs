@@ -1,0 +1,57 @@
+<% include partials/header %>  
+
+
+				    <% for (var  w of data) { %>       
+					<%} %>  
+				  
+				    <% if (isAuthenticated) { %>
+						<% if (user.type === 'admin') {%>
+						<% } %>
+					<% } %> 
+
+
+                        <div class="modal-content">
+                          <div class="modal-header"><strong id="modal" class="modal-title">Definições do Workshop</strong>
+                          </div>
+                          <div class="modal-body">
+                            <p>Inserir campos obrigatorios</p>
+                              <form action="/workshop" method="post">
+							  <div class="form-group">
+                                <label>Nome</label>
+                                <input type="text" placeholder="" class="form-control" name="nome" value="<%w.nome %>">
+                              </div>
+							  
+							  <div class="form-group">
+                                <label>Data inicio</label>
+                                <input onload="myFunctionI()" type="date" placeholder="Data de inicio" class="form-control" name="datainicio" value="<%w.datainicio %>">
+								<p id="I"> ff</p>
+
+<script>
+function myFunctionI() {
+    var d = <%w.datainicio %>;
+    var n = d.toLocaleDateString();
+    document.getElementById("I").innerHTML = n;
+}</script>
+                              </div>
+							  <div class="form-group">
+                                <label>Data fim</label>
+                                <input type="date" placeholder="Data de fim" class="form-control" name="datafim" value="<%w.datafim %>">
+                              </div>
+							  <div class="form-group">
+                                <label>Local</label>
+                                <input type="text" placeholder="local do evento" class="form-control" name="local" value="<%w.local %>">
+                              </div>
+							  <div class="form-group">
+                                <label>Bilhetes a emitir dia</label>
+                                <input type="text" placeholder="Capacidade do Auditorio" class="form-control" value="<%w.local %>">
+                              </div>			<div class="modal-footer">
+                              <button href="index"  class="btn btn-secondary">Close</button>
+                              <button type="submit" class="btn btn-primary">Save changes</button>
+                          </div>						  
+                            </form>
+					
+                          </div>
+                         
+                        </div>
+                      </div>
+                    </div>     

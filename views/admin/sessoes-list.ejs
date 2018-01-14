@@ -1,0 +1,91 @@
+<% include headerAdmin %>
+<% include navAdmin %>
+
+<br>
+
+<div class="page-content-wrap">
+	<div class="row">
+		<div class="col-md-12">
+
+			<!-- START DEFAULT DATATABLE -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><a href="/sessoes/create"><button class="btn btn-danger">Registar Sessão</button></a></h3>
+					<ul class="panel-controls">
+						<li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+						<li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+						<li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+					</ul>
+				</div>
+				<div class="panel-body">
+					<table class="table datatable">
+						<thead>
+						<tr>
+							<th>Nome da sessão</th>
+							<th>Speaker</th>
+							<th>Inicio</th>
+							<th>Fim</th>
+							<th>Sala</th>
+							<th></th>
+						</tr>
+						</thead>
+						<tbody><% for (var u of data) { %>
+						<tr>
+							<a  data-toggle="modal" data-target="#card" >
+							<td><%= u.nome %></a></td>
+							<td><%= u.name %></td>
+							<td><%= u.inicio %></td>
+							<td><%= u.fim %></td>
+							<td><%= u.sala %></td></a>
+							<td><a href="/sessoes/<%= u.idSessao %>">Edit</a></td>
+						</tr><%} %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+<!-- <section class="no-padding-top">
+<div class="col-lg-12">
+                <div class="block">
+                  <div class="sessoes"><strong>Lista de Sessoes</strong></div>
+                  <table id="sessoes" class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Nome da Sessão</th>
+                        <th>Speaker</th>
+                        <th>Inicio</th>
+                        <th>Fim</th>
+                        <th>Sala</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% for (var u of data) { %>
+                    <tr>
+                        <td><%= u.nome %></td>
+                        <td><%= u.name %></td>
+                        <td><%= u.inicio %></td>
+                        <td><%= u.fim %></td>
+                        <td><%= u.sala %></td>
+                        <td><a href="/sessoes/<%= u.idSessao %>">Edit</a></td>
+                    </tr>
+                    <%} %>
+                    </tbody>
+                </table>
+            
+	    </section>
+
+            <div class="container">
+                <a href="/sessoes/create"><button class="btn btn-danger">Registar Sessao</button></a>
+            </div>
+    </div>-->
+<% include footerAdmin %>

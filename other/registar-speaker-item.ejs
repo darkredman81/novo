@@ -1,0 +1,155 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Registar Speaker</title>
+  <!-- Bootstrap core CSS-->
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <script src="https://use.fontawesome.com/9a14895eb3.js"></script>
+  <!-- Custom styles for this template-->
+  <link href="/css/sb-admin.css" rel="stylesheet">
+  <!-- Custom icons for this template-->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+
+<script type="text/javascript">
+	function removeRecord() {
+		if (confirm('Do you really want to remove the record?')) {
+			window.open("<%= '/speakers/' + speaker.nome + '/delete'%>")
+		}
+	}
+</script>
+
+<h2> <%= (isNew) ? '' : 'Registo de Novo Speaker ' %></h2>
+
+<% for (var e of errors) { %>
+<div class="alert alert-danger"><%= e.msg %></div>
+<% } %>
+
+<body class="bg-dark">
+  <div class="container">
+  	
+	<form  class="well form-horizontal" action="/speakers/<%= (isNew) ? 'create' : speaker.nome %>" method="post"   name="form">
+
+    <div class="card card-register mx-auto mt-5">
+		<div class="card-header">Registar Speaker</div>
+      		<div class="card-body">
+   				<form>
+					
+		<!-- Inserir Nome do Speaker-->
+          <div class="form-group">
+            <div class="form-row">
+              <label class="col-md-10 control-label">Nome</label>
+				<div class="col-md-10 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user-o" aria-hidden="true"></i></span>
+						<input name="nome" placeholder="Nome" class="form-control" id="nome" type="text" value="<%= speaker.nome %>" required>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+            </div>
+          </div>
+
+		  <!-- Inserir Email do Speaker-->
+       <div class="form-group">
+			<div class="form-row">
+			<label class="col-md-10 control-label">E-Mail</label>
+				<div class="col-md-10 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+						<input name="email" aria-describedby="emailHelp" id="email" placeholder="E-Mail" class="form-control"  type="email" data-error="Esse email não é válido" value="<%= speaker.email %>" required>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+			</div>
+	   </div>
+
+          <!-- Inserir Nif do Speaker-->
+		  <div class="form-group">
+				<div class="form-row">
+				<label class="col-md-10 control-label">Nif</label>
+					<div class="col-md-10 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i></span>
+							<input  name="nif" placeholder="Nif do speaker" class="form-control" id="nif" value="<%= speaker.nif %>" type="text">
+						</div>
+					</div>
+			</div>
+		</div>
+
+
+		<!-- Telefone do Speaker-->
+
+			<div class="form-group">
+				<div class="form-row">
+			  		<label class="col-md-10 control-label">Telefone</label>
+						<div class="col-md-10 inputGroupContainer">
+						<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+			  <input name="telefone" placeholder="(253)" id="telefone" class="form-control" value="<%= speaker.telefone %>" type="text">
+					</div>
+			  	</div>
+			  </div>
+			</div>
+
+		<!--Cachet do Speaker-->
+
+		<div class="form-group">
+			<div class="form-row">
+				<label class="col-md-10 control-label">Cachet</label>
+			<div class="col-md-10 inputGroupContainer">
+			<div class="input-group">
+				<span class="input-group-addon"><i class="fa fa-money" aria-hidden="true"></i></span>
+			<input name="cachet" placeholder="(Valor do Cachet)" id="cachet" class="form-control" value="<%= speaker.cachet %>" type="text">
+			</div>
+		  </div>
+		</div>
+		</div>
+
+	<!--Dia e hora da sessão do Speaker-->
+
+	<div class="form-group">
+ <div class="form-row">
+ <label class="col-md-10 control-label">Dia da Sessão</label>  
+	 <div class="col-md-10 inputGroupContainer">
+		 <div class="input-group">
+			 <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+			 <input name="dia_sessao" aria-describedby="emailHelp" id="dia_sessao" placeholder="Dia e Hora da Sessão" class="form-control"  value="<%= speaker.dia_sessao %>" type="datetime-local">
+		 </div>
+	 </div>
+ </div>	
+</div>
+
+<!-- Botão para submeter-->
+
+			<button type="submit" class="btn btn-default" ; onclick="validar();">Save</button>
+		<% if (! isNew) { %>
+			<button type="button" class="btn btn-danger" onclick="removeRecord()">Delete</button>
+		<% } %>
+
+        	
+	
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="/jquery/jquery.min.js"></script>
+  <script src="/popper/popper.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/js/validar_speaker.js"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="/jquery-easing/jquery.easing.min.js"></script>
+  <!--Bootstrap core Jquery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<!--Informar utilizador do estado do form-->
+	<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryvalidate/1.17.0/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrapvalidator/0.10.2/validator.min.js"></script>
+	<script src="./controller/registar_speaker.controller.js"></script>
+
+

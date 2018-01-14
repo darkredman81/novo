@@ -1,0 +1,188 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Registar Colaborador</title>
+  <!-- Bootstrap core CSS-->
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <script src="https://use.fontawesome.com/9a14895eb3.js"></script>
+  <!-- Custom styles for this template-->
+  <link href="/css/sb-admin.css" rel="stylesheet">
+  <!-- Custom icons for this template-->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+
+<script type="text/javascript">
+	function removeRecord() {
+		if (confirm('Do you really want to remove the record?')) {
+			window.open("<%= '/colaboradores/' + colaborador.nome + '/delete'%>")
+		}
+	}
+</script>
+
+<h2><%= (isNew) ? '' : 'Registo de Novo Colaborador ' %></h2>     
+<% for (var e of errors) { %>
+<div class="alert alert-danger"><%= e.msg %></div>
+<%}%>
+
+
+<body class="bg-dark">
+  <div class="container">
+	<form class="well form-horizontal" action="/colaboradores/<%= (isNew) ? 'create' : colaborador.nome %>" method="post"  id="contact_form" name="form">
+
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Registar Colaborador</div>
+      <div class="card-body">
+        <form>
+		
+		<!-- Inserir Nome do Colaborador-->
+          <div class="form-group">
+            <div class="form-row">
+              <label class="col-md-10 control-label">Nome</label> 
+				<div class="col-md-10 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user-o" aria-hidden="true"></i></span>
+						<input name="nome" placeholder="Nome colaborador" class="form-control" id="nome" type="text" value="<%= colaborador.nome %>" required >
+					</div>
+				</div>	
+            </div>
+          </div>
+		  
+		  <!-- Inserir Email do Colaborador-->
+       <div class="form-group">
+			<div class="form-row">
+			<label class="col-md-10 control-label">E-Mail</label>  
+				<div class="col-md-10 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+						<input name="email" aria-describedby="emailHelp" id="email" placeholder="E-Mail" class="form-control"  type="email" value="<%= colaborador.email %>" required>
+					</div>
+				</div>
+			</div>	
+	   </div>
+	   
+          <!-- Morada do Colaborador-->
+		  <div class="form-group">
+				<div class="form-row">
+				<label class="col-md-10 control-label">Morada</label>  
+					<div class="col-md-10 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-university" aria-hidden="true""></i></span>
+							<input  name="morada" placeholder="Morada" id="morada" class="form-control"  type="text" value="<%= colaborador.morada %>" required>
+						</div>
+					</div>
+			</div>
+		</div>
+		
+		
+		<!-- Telefone do Colaborador-->
+       
+			<div class="form-group">
+				<div class="form-row">
+			  <label class="col-md-10 control-label">Telefone</label>  
+				<div class="col-md-10 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+			  <input name="telefone" placeholder="(253)" id="telefone" class="form-control" type="text" value="<%= colaborador.telefone %>">
+				</div>
+			  </div>
+			  </div>
+			</div>
+			
+				<!-- Função a desempenhar-->	
+		<div class="form-group">
+			<div class="form-row">
+		  <label class="col-md-10 control-label">Função a desempenhar</label>
+			<div class="col-md-10 selectContainer">
+			<div class="input-group">
+				<span class="input-group-addon"><i class="fa fa-briefcase" aria-hidden="true"></i></span>
+			<select name="funcao_desempenhar[]" id = "funcao" class="form-control selectpicker" value="<%= colaborador.funcao_desempenhar %>">
+			  <option>Selecione a função do colaborador</option>
+			  <option value="Eletricista">Electricista</option>
+			  <option value="Canalizador">Canalizador</option>
+			  <option value="Assistente de Sala">Assistente de Sala</option>
+			  <option value="Secretária">Secretária</option>
+			  <option value="Técnico de Som">Técnico de Som</option>
+			  <option value="Técnico de Imagem">Técnico de Imagem</option>
+			  <option value="Carpinteiro">Carpinteiro</option>
+			  <option value="Segurança">Segurança</option>
+			  <option value="Produtor">Produtor</option>
+			</select>
+		  </div>
+		</div>
+	</div>	
+</div>
+		
+		<!-- Inserir Nif do Colaborador-->
+		  <div class="form-group">
+				<div class="form-row">
+				<label class="col-md-10 control-label">Nif</label>
+					<div class="col-md-10 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-university" aria-hidden="true""></i></span>
+							<input  name="nif" placeholder="Nif do Colaborador" class="form-control" id="nif" value="<%= colaborador.nif %>" type="text">
+						</div>
+					</div>
+			</div>
+		</div>
+		
+		<!--Dias de trabalho do Colaborador-->
+
+	<div class="form-group">
+ <div class="form-row">
+ <label class="col-md-10 control-label">Dias de Trabalho</label>  
+	 <div class="col-md-10 inputGroupContainer">
+		 <div class="input-group">
+			 <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+			 <input name="dia_trabalho" aria-describedby="emailHelp" id="dia_trabalho" placeholder="Dia de trabalho do colaborador" class="form-control"  value="<%= colaborador.dia_trabalho %>" type="text">
+		 </div>
+	 </div>
+ </div>	
+</div>
+		
+		<!--Estatuto do colaborador-->
+		
+<div class="form-group">
+ <div class="form-row">
+	 <label class="col-md-10 control-label">Estatuto do Colaborador</label>  
+ <div class="col-md-10 inputGroupContainer">
+ <div class="input-group">
+	 <span class="input-group-addon"><i class="fa fa-money" aria-hidden="true"></i></span value="<%= colaborador.estatuto %>">
+	 
+	 <div class="radio">
+		 <label><input type="radio" name="estatuto" value="S">Pago</label>
+	 </div>
+	 <div class="radio">
+		 <label><input type="radio" name="estatuto" value="N">Voluntário</label>
+	 </div>
+
+	 </div>
+ </div>
+</div>
+</div>
+		  
+<!-- Botão para submeter-->
+
+<button type="submit" class="btn btn-default" onclick="validar(); type="submit" ">Submeter</button>
+
+<% if (! isNew) { %>
+
+<button type="button" class="btn btn-danger" onclick="removeRecord()">Delete</button>
+<% } %>
+
+
+		
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="/jquery/jquery.min.js"></script>
+  <script src="/popper/popper.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="/js/validar_colaborador.js"></script>
+  <script src="/jquery-easing/jquery.easing.min.js"></script>
+</body>
+

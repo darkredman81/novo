@@ -1,0 +1,229 @@
+<% include headerAdmin %>
+<% include navAdmin %>
+
+<script type="text/javascript">
+    function removeRecord() {
+        if (confirm('Do you really want to remove the record?')) {
+            window.open("<%= '/colaboradores/' + colaborador.idUser + '/delete'%>")
+        }
+    }
+</script>
+
+<h2><%= (isNew) ? '' : 'colaborador Data' %></h2>
+<% for (var e of errors) { %>
+<div class="alert alert-danger"><%= e.msg %></div>
+<%}%>
+
+
+<!-- START BREADCRUMB -->
+<ul class="breadcrumb">
+    <li><a href="/colaboradores">Home</a></li>
+    <li class="active">Dados de Conta</li>
+</ul>
+<!-- END BREADCRUMB -->
+
+<!-- PAGE TITLE -->
+<div class="page-title">
+    <h2><span class="fa fa-arrow-circle-o-left"></span> Dados do Utilizador: <%= colaborador.name %></h2>
+</div>
+<!-- END PAGE TITLE -->
+
+<!-- PAGE CONTENT WRAPPER -->
+<div class="page-content-wrap">
+    <div class="col-md-4">
+
+        <!-- START JQUERY VALIDATION PLUGIN -->
+        <div class="block">
+            <div class="profile">
+                <div class="profile-image">
+                    <img src="<%= colaborador.photo %>" />
+                </div>
+                <label class="col-md-3 control-label"></label>
+
+                <div class="profile-data">
+                    <div class="profile-data-name"><%= colaborador.name%></div>
+                    <div class="profile-data-title"><%= colaborador.dateReg%></div>
+                </div>
+            </div>
+
+        </div>
+        <!-- END PAGE CONTENT -->
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <!-- START JQUERY VALIDATION PLUGIN -->
+            <div class="block">
+                <h4>Modificar dados</h4>
+                <form id="jvalidate" role="form" class="form-horizontal" action="/colaboradores/<%= (isNew) ? 'create' : colaborador.idUser%> " method="post"  id="contact_form" name="form">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Nome:</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="name" value="<%= colaborador.name %>"  >
+                                <span class="help-block">Tamanho minimo = 8, Tamanho maximo = 8</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">E-mail:</label>
+                            <div class="col-md-9">
+                                <input type="text" name="email" class="form-control" value="<%= colaborador.email %>" required/>
+                                <span class="help-block">Escreva o email no formato correcto!</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Morada:</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="morada" value="<%= colaborador.morada %>" />
+                                <span class="help-block">Tamanho minimo = 8, Tamanho maximo = 100</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Telefone:</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="telefone" value="<%= colaborador.telefone %>" required />
+                                <span class="help-block">max size = 9</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Função:</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="type" value="<%= colaborador.type %>" <%if (colaborador.type=="admin") { %> readonly value="<%= colaborador.type %>" <% } %> />
+                                <span class="help-block">Função da lista</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Nif:</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="nif" value="<%= colaborador.nif %>" <% if (colaborador.nif == (! null)) { %> disabled="" <% } %> />
+                                <span class="help-block">Insira um Nif valido</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Foto Link:</label>
+                            <div class="col-md-9">
+                                <input type="text"  name="photo" class="form-control" value="<%= colaborador.photo %>"  />
+                                <span class="help-block">required url</span>
+                            </div>
+                        </div>
+                        <div class="btn-group pull-right">
+                            <a href="/colaboradores"><button class="btn btn-primary" type="button">Back</button></a>
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- END JQUERY VALIDATION PLUGIN -->
+            </div>
+        </div>
+    </div>
+    <!-- END PAGE CONTENT -->
+</div>
+
+<!-- END PAGE CONTAINER -->
+
+<!-- MESSAGE BOX-->
+<div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+    <div class="mb-container">
+        <div class="mb-middle">
+            <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
+            <div class="mb-content">
+                <p>Are you sure you want to log out?</p>
+                <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
+            </div>
+            <div class="mb-footer">
+                <div class="pull-right">
+                    <a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
+                    <button class="btn btn-default btn-lg mb-control-close">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MESSAGE BOX-->
+
+<!-- START PRELOADS -->
+<audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
+<audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
+<!-- END PRELOADS -->
+
+<!-- START SCRIPTS -->
+<!-- START PLUGINS -->
+<script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/plugins/bootstrap/bootstrap.min.js"></script>
+<!-- END PLUGINS -->
+
+<!-- THIS PAGE PLUGINS -->
+<script type='text/javascript' src='js/plugins/icheck/icheck.min.js'></script>
+<script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+
+<script type='text/javascript' src='js/plugins/bootstrap/bootstrap-datepicker.js'></script>
+<script type='text/javascript' src='js/plugins/bootstrap/bootstrap-select.js'></script>
+
+<script type='text/javascript' src='js/plugins/validationengine/languages/jquery.validationEngine-en.js'></script>
+<script type='text/javascript' src='js/plugins/validationengine/jquery.validationEngine.js'></script>
+
+<script type='text/javascript' src='js/plugins/jquery-validation/jquery.validate.js'></script>
+
+<script type='text/javascript' src='js/plugins/maskedinput/jquery.maskedinput.min.js'></script>
+<!-- END THIS PAGE PLUGINS -->
+
+<!-- START TEMPLATE -->
+<script type="text/javascript" src="js/settings.js"></script>
+
+<script type="text/javascript" src="js/plugins.js"></script>
+<script type="text/javascript" src="js/actions.js"></script>
+<!-- END TEMPLATE -->
+
+<script type="text/javascript">
+    var jvalidate = $("#jvalidate").validate({
+        ignore: [],
+        rules: {
+            nome: {
+                required: true,
+                minlength: 8,
+                maxlength: 45
+            },
+            morada: {
+                minlength: 8,
+                maxlength: 45
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            type: {
+                required: true,
+            },
+            telefone: {
+                required: true,
+                number: true,
+                minlength: 9,
+                maxlength: 9
+            },
+            nif: {
+                required: true,
+                number: true,
+                minlength: 9,
+                maxlength: 9
+            },
+            photo: {
+                url: true,
+                maxlength: 300
+            }
+        }
+    });
+
+</script>
+
+<!-- END SCRIPTS -->
+
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,309 @@
+<% include headerAdmin %>
+<% include navAdmin %>
+
+        <div class="page-header no-margin-bottom">
+          <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">Forms</h2>
+          </div>
+        </div>
+        <ul class="breadcrumb">
+          <div class="container-fluid">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          </div>
+        </ul>
+        <section class="no-padding-top">
+          <div class="container-fluid">
+            <div class="row">
+<!---------------------- Modal Form-------------------------->
+			  <div class="col-lg-4">
+                <div class="block">
+                  <div class="title"><strong>Workshop Data</strong></div>
+                  <div class="block-body text-center">
+
+                <% if (isAuthenticated) { %>
+                <% if (user.type === 'admin') {%>
+
+                <% } %>
+                <% } %>
+
+<a type="button"  class="btn btn-primary" href="/workshop">Editar dados Workshop</a>
+
+
+<!---------------------- Modal Form------------------------
+					<div role="presentation" id="workshop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                      <div role="document" class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Definições do Workshop</strong>
+                            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Inserir campos obrigatorios</p>
+                            <form>
+							  <div class="form-group">
+                                <label>Nome</label>
+                                <input type="text" placeholder="" class="form-control" value="%= w.nome %>">
+                              </div>
+
+							  <div class="form-group">
+                                <label>Data inicio</label>
+                                <input type="date" placeholder="Data de inicio" class="form-control" value="%= w.datainicio %>">
+                              </div>
+							  <div class="form-group">
+                                <label>Data fim</label>
+                                <input type="date" placeholder="Data de fim" class="form-control" value="%= w.datafim %>">
+                              </div>
+							  <div class="form-group">
+                                <label>Local</label>
+                                <input type="text" placeholder="local do evento" class="form-control" value="%= w.local %>">
+                              </div>
+							  <div class="form-group">
+                                <label>Bilhetes a emitir dia</label>
+                                <input type="number" placeholder="Capacidade do Auditorio" class="form-control" value="%= w.local %>">
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>  ---->
+                  </div>
+                </div>
+              </div>
+<!---------------------- Modal Form-------------------------->
+              <div class="col-lg-4">
+                <div class="block">
+                  <div class="title"><strong>Novo Colaborador</strong></div>
+                  <div class="block-body text-center">
+
+
+                    <div class="container">
+                      <a href="/colaboradores/create""><button class="btn btn-primary">Registar Colaborador</button></a>
+                    </div>
+<!---------------------- Modal Form--------------------------
+                    <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                      <div role="document" class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Registo de Novo Colaborador</strong>
+                            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Inserir campos obrigatorios</p>
+                            <form>
+							  <div class="form-group">
+                                <label>Nome</label>
+                                <input type="text" placeholder="Nome" class="form-control">
+                              </div>
+							  <div class="form-group">
+                                <label>Apelido</label>
+                                <input type="text" placeholder="Apelido" class="form-control">
+                              </div></form><form>
+							  <div class="form-group">
+                                <label>Morada</label>
+                                <input type="text" placeholder="Morada" class="form-control">
+                              </div>
+							  <div class="form-group">
+                                <label>Função</label>
+                                <input type="text" placeholder="Funcao" class="form-control">
+                              </div>
+							  <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" placeholder="Email Address" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                <label>Telemovel</label>
+                                <input type="text" placeholder="Telemovel" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                <label>NIF</label>
+                                <input type="text" placeholder="Nif" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                <input type="submit" value="Signin" class="btn btn-primary">
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>-->
+                    </div>
+                </div>
+              </div>
+<!---------------------- Modal Form-------------------------->
+			 <div class="col-lg-4">
+                <div class="block">
+                  <div class="title"><strong>Novo Speaker</strong></div>
+                  <div class="block-body text-center">
+                                        <div class="container">
+                      <a href="/speakers/create""><button class="btn btn-primary">Registar Sessão</button></a>
+                    </div>
+<!---------------------- Modal Form-------------------------->
+                    <div id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                      <div role="document" class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Registo de Novo Speaker</strong>
+                            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Inserir campos obrigatorios</p>
+                            <form>
+							  <div class="form-group">
+                                <label>Nome</label>
+                                <input type="text" placeholder="Nome" class="form-control">
+                              </div>
+							  <div class="form-group">
+                                <label>Apelido</label>
+                                <input type="text" placeholder="Apelido" class="form-control">
+                              </div>
+							  <div class="form-group">
+                                <label>Nif</label>
+                                <input type="text" placeholder="Nif" class="form-control">
+                              </div>
+							  <div class="form-group">
+                                <label>Telemovel</label>
+                                <input type="text" placeholder="Telemovel" class="form-control">
+                              </div>
+							  <div class="form-group">
+                                <label>Cache</label>
+                                <input type="text" placeholder="Cache" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                <label>Telemovel</label>
+                                <input type="text" placeholder="Telemovel" class="form-control">
+                              </div>
+							  <div class="form-group">
+                                <label>Sessão</label>
+                                <input type="text" placeholder="Dia \ Hora" class="form-control">
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+<!---------------------- Modal Form-------------------------->
+			<div class="col-lg-4">
+                <div class="block">
+                  <div class="title"><strong>Novo Patrocinio</strong></div>
+                   <div class="block-body text-center">
+                                        <div class="container">
+                      <a href="/patrocinios/create""><button class="btn btn-primary">Registar Patrocinio</button></a>
+                    </div>
+<!---------------------- Modal Form-------------------------->
+                    <div id="Patrocinio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                      <div role="document" class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Registo de Novo Patrocinio</strong>
+                            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Inserir campos obrigatorios</p>
+                            <form>
+							  <div class="form-group">
+                                <label>Nome</label>
+                                <input type="text" placeholder="Nome" class="form-control">
+                              </div>
+							  <div class="form-group">
+                                <label>Doação</label>
+                                <input type="number" placeholder="Quantia" class="form-control">
+                              </div>
+								<div class="form-group">
+									<label>Upload Image</label>
+									<div class="input-group">
+										<span class="input-group-btn">
+											<span class="btn btn-default btn-file">
+												Browse… <input type="file" id="imgInp">
+											</span>
+										</span>
+										<input type="text" class="form-control" readonly>
+									</div>
+									<img id='img-upload'/>
+								</div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+<!---------------------- Modal Form-------------------------->
+			<div class="col-lg-4">
+                <div class="block">
+                  <div class="title"><strong>Nova Sessão</strong></div>
+                   <div class="block-body text-center">
+                     <div class="container">
+                      <a href="/sessoes/create""><button class="btn btn-primary">Registar Sessao</button></a>
+                    </div>
+<!---------------------- Modal Form-------------------------->
+                    <div id="Patrocinio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                      <div role="document" class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Registo de Novo Patrocinio</strong>
+                            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Inserir campos obrigatorios</p>
+                            <form>
+							  <div class="form-group">
+                                <label>Nome</label>
+                                <input type="text" placeholder="Nome" class="form-control">
+                              </div>
+							  <div class="form-group">
+                                <label>Doação</label>
+                                <input type="number" placeholder="Quantia" class="form-control">
+                              </div>
+								<div class="form-group">
+									<label>Upload Image</label>
+									<div class="input-group">
+										<span class="input-group-btn">
+											<span class="btn btn-default btn-file">
+												Browse… <input type="file" id="imgInp">
+											</span>
+										</span>
+										<input type="text" class="form-control" readonly>
+									</div>
+									<img id='img-upload'/>
+								</div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </section>
+		        <section><div></div></section>
+		<!--Footer--->
+        <footer class="footer">
+          <div class="footer__block block no-margin-bottom">
+            <div class="container-fluid text-center">
+              <p class="no-margin-bottom">2017 &copy; Your company. Design by <a href="#">Group 156</a>.</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <!-- Javascript files-->
+<% include footerAdmin %>

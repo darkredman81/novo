@@ -1,0 +1,56 @@
+<% include headerAdmin %>
+
+
+<div class="col-md-12">
+
+	<div class="panel panel-default">
+		<div class="panel-body profile bg-info">
+			<tbody> <% for (var u of data) { %>
+			<div class="profile-logo">
+				<img src="/images/events/logo.png" alt="WorkEvent">
+				<br>
+			</div>
+			<div class="profile-logo"><h3>WorkEvent</h3></div>
+
+		</div>
+		<form id="jvalidate" role="form" class="form-horizontal" action="/workshop/<%= u.idWorkshop%> " method="post"  name="form">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title">Dados do Workshop</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<div class="form-row">
+						<div class="col-md-12 inputGroupContainer">
+							<div class="input-group">Nome:
+								<input name="nome"  class="form-control" id="nome" type="text" value="<%= u.nome %>" required >
+							</div>
+						</div>
+					</div>
+						<div class="form-group">
+							<label class="col-md-4 control-label">Data inicio: </label>
+							<div class="col-md-5">
+								<div class="input-group date" id="dp-2" data-date="05-07-2014" data-date-format="dd-mm-yyyy">
+									<input name="datainicio"  type="text" class="form-control" value="<%= u.datainicio %>" disabled="disabled"/>
+									<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+								</div>
+							</div>
+						</div>
+
+
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-default" onClick="noty({text: 'Dados Alterados', layout: 'topRight', type: 'success'});">Alterar</button>
+						<button class="btn btn-default"><a href="/workshop">Back</a></button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+
+
+
+
+<% include footerAdmin %>

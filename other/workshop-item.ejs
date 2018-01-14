@@ -1,0 +1,55 @@
+<head>
+				<meta charset="utf-8">
+				<meta http-equiv="X-UA-Compatible" content="IE=edge">
+				<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+				<meta name="description" content="">
+				<meta name="author" content="">
+				<title>Alterar Parametro</title>
+				<!-- Bootstrap core CSS-->
+				<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+				<!-- Custom fonts for this template-->
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+				<script src="https://use.fontawesome.com/9a14895eb3.js"></script>
+				<!-- Custom styles for this template-->
+				<link href="/css/sb-admin.css" rel="stylesheet">
+			  </head>
+
+	<body class="bg-dark">
+			<div class="container">
+			  <div class="card card-login mx-auto mt-6">
+				
+				
+
+	<h2><%= (isNew) ? 'Novo Parametro' : 'Workshop Data' %></h2>   
+
+	<% if (errors.length) { %>  
+		<div class="alert alert-danger">
+			<ul>
+			<% for (var e of errors) { %>
+				<li><%= e.msg %></li>
+			<% }%>
+			</ul>
+		</div>	
+	<% } %>	
+
+	<form action="/workshop/<%= (isNew) ? 'create' : workshop.nome %>" method="post">
+		
+		<div class="form-group">
+      <label for="nome" name="nome">Parametro:</label>
+      <input type="text" class="form-control" id="nome" placeholder="Introduza o nome" name="nome" value="<%= workshop.nome %>" disabled>
+      <input type="text" class="form-control" id="valor" placeholder="Introduza o nome" name="valor" value="<%= workshop.valor %>">
+		</div>
+
+		    
+    <button type="submit" class="btn btn-default">Save</button>
+		
+		
+	</form>
+	      
+ <!-- Bootstrap core JavaScript-->
+ <script src="/jquery/jquery.min.js"></script>
+ <script src="/popper/popper.min.js"></script>
+ <script src="/bootstrap/js/bootstrap.min.js"></script>
+ <!-- Core plugin JavaScript-->
+ <script src="/js/login_val.js"></script>
+ <script src="/jquery-easing/jquery.easing.min.js"></script>

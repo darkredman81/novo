@@ -1,0 +1,535 @@
+<% include partials/header %>
+
+<body  data-spy="scroll" data-target=".navbar" data-offset="50">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <nav>
+                <a class="navbar-brand" href="#site-header">Web Security 2018</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#nossaEquipa">A nossa Equipa</a></li>
+                <li><a href="#oradores">Oradores</a></li>
+                <li><a href="#sessoes">Sessões</a></li>
+                <li><a href="#parceiros">Parceiros</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#photos">Fotos</a></li>
+                <% if (isAuthenticated) { %>
+                <li role="presentation"><a href="/profile">Profile</a></li>
+                <% if (user.type === 'admin') {%>
+                <li role="presentation"><a href="/admin">Backend</a></li>
+                <% } %>
+                <% } %>
+                <li role="presentation">
+                    <% if (isAuthenticated) { %>
+                    <a href="/logout">Logout</a>
+                    <% } else { %>
+                    <a href="/login">Login</a>
+                    <% } %>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--<ul class="nav nav-pills pull-right">
+              <li role="presentation"><a href="/">Home</a></li>-->
+
+
+<header id="site-header" class="site-header parallax">
+    <div class="textonaparallax">
+        <h1>Web Security 2018</h1>
+        <h3>26 Janeiro 2018 /<br> Theatro Circo Braga</h3>
+        <br>
+        <% if (!isAuthenticated) { %>
+        <a class="active" data-toggle="tab" href="/login.ejs">
+            <button type="button" class="btn btn-white" data-toggle="modal" data-target="#myModal" >Entrar/Registar Agora</button>
+        </a>
+        <% } %>
+    </div>
+</header>
+
+<!-- nozza equipa -->
+<div  id="nossaEquipa" class="container textjustifica">
+    <div class="col-sm-6">
+        <h3>A nossa Equipa</h3>
+        <p>Como alunos do curso MiEGSI (Mestrado integrado em Engenharia e Gestão de Sistemas de Informação) da
+            Universidade do Minho, levamos uma aboradagem realista do futuro que nos espera. Como tal a <strong>Web
+                Security</strong> é uma das problematicas que mais receio e duvida causa nos comuns utilizadores
+            de sistemas informaticos bem como nos proprios desenvolvedores de aplicações e websites.</p>
+
+        <br>
+        <div class="row text-center">
+            <div class="col-sm-4">
+                <p class="text-center"><strong>António Guimarães</strong></p>
+                <a href="#demo" data-toggle="collapse">
+                    <img src="./images/nos/ant.png" class="img-circle person" alt="Random Name" width="255" height="255">
+                </a>
+                <div id="demo" class="collapse">
+                    <p>CEO</p>
+                    <p>Loves long walks on the beach</p>
+                    <p>Member since 1988</p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <p class="text-center"><strong>Paulo Andrade</strong></p>
+                <a href="#demo2" data-toggle="collapse">
+                    <img src="./images/nos/pau.png" class="img-circle person" alt="Random Name" width="255" height="255">
+                </a>
+                <div id="demo2" class="collapse">
+                    <p>CFO</p>
+                    <p>Loves drummin'</p>
+                    <p>Member since 1988</p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <p class="text-center"><strong>Rui Marques</strong></p>
+                <a href="#demo3" data-toggle="collapse">
+                    <img src="./images/nos/rui.png" class="img-circle person" alt="Random Name" width="255" height="255">
+                </a>
+                <div id="demo3" class="collapse">
+                    <p>Pleb</p>
+                    <p>Loves meth</p>
+                    <p>Member since Minecraft came out</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="col-sm-12">
+
+            <h3 class="section-title multiple-title">Qual o nosso objetivo?</h3>
+
+            <p>Dar uma abordagem elucidativa a todos os alunos da Universidade sendo ou não de cursos ligados a
+                novas tecnologias, de forma a poder manter as pessoas informadas de todos os novos perigos nos dias
+                de hoje. A Web como o comum utilizador conhece parece ser simplista e facil de usar mas nem sempre é
+                assim, pessoas mal intencionadas muito facilmente te acesso a dados que deveriam ser privados. </p>
+        </div>
+        <div class="col-sm-12">
+            <ul class="list-arrow">
+
+                <li>Debates sobre novos perigos da WEB &amp; Casos exemplo</li>
+                <li>Palestras de oradores de renome.</li>
+                <li>Uma linguagem simples e que os alunos possam entender</li>
+                <li>Palestras abertas a perguntas e respostas</li>
+
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<section id="facts" class="section bg-image-1 facts text-center parallax2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInDown" data-wow-duration="500ms">
+                <div class="counters-item">
+                    <h5 class="fa fa-users fa-3x"></h5>
+                    <h3>3700<br>Bilhetes</h3>
+                </div>
+            </div>
+            <div class="col-sm-3">
+
+                <h5 class="ion-ios-location"></h5>
+                <h3>Braga<br>Portugal</h3>
+
+            </div>
+            <div class="col-sm-3">
+
+                <h5 class="ion-pricetags"></h5>
+                <h3>73<br>Workshops</h3>
+
+            </div>
+            <div class="col-sm-3">
+
+                <h5 class="ion-speakerphone"></h5>
+                <h3>        	
+                <tbody>
+    			<% for (var t of totalspeakers) { %>       
+            	
+                <td><%= t.tspeakers %></td>
+
+    			     
+       	<br>Oradores</h3>
+      </tbody> <%} %> 
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="oradores" class="section speakers ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title text-center">Speakers</h3>
+            </div>
+        </div>
+
+    <div class="text-center"><% for (var s of speakers) { %><tbody>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="speaker">
+                    <br>
+                    <p class="text-center"><strong><%= s.sname %></strong></p>
+                    <a href="#demo4" data-toggle="collapse" class="text-center ">
+                        <img src="<%= s.pspeakers %>" class="img-circle person center " alt="" >
+                    </a>
+                    <div id="demo4" class="collapse">
+                        <p>Software Engineering, Algorithms, Programming Languages</p>
+                        <ul class="social-block">
+                            <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                            <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                            <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                            <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                        </ul>
+                    </div>
+
+                </div><!-- /.speaker -->
+            </div></tbody> <%} %>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- eventus -->
+<div id="sessoes" class=" parallax3" >
+    <div class="container">
+        <h3 class="text-center">Sessões</h3>
+        <p class="text-center">Compre Bilhetes, a partir do momento que esta mensagem é exibida nós temos conhecimento das suas informações bancárias e/ou morada, faça favor de comprar o Bilhete geral.</p>
+        <ul class="list-group">
+            <li class="list-group-item"> <span class="label label-danger">Sold Out!</span> 29 Janeiro - 12:00 - <strong>Segurança para sistemas distribuidos em Scheme</strong> - Filipe de Sá-Soares <span class="badge">250/250</span> </li>
+            <li class="list-group-item"> <span class="label label-danger">Sold Out!</span> 29 Janeiro - 17:23 - <strong>Segurança dos Magalhães em redes virtuais de Minecraft</strong> - guyfawkes020 <span class="badge">120/120</span></li>
+            <li class="list-group-item"> <span class="label label-warning ">Ultimos bilhetes!</span> 29 Janeiro - 19:00 - <strong>"Gringo: The Dangerous Life of John McAfee" Review and inspirational speech</strong> - John McAfee <span class="badge">75/80</span></li>
+        </ul>
+
+        <div class="row text-center">
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <img src="./images/events/gringothedangerouslifeofjohnmcafee.jpg" alt="johnmcafee.jpg" width="400" height="300">
+                    <p><strong>"Gringo: The Dangerous Life of John McAfee"<br> Review and inspirational speech</strong></p>
+                    <p>29 Janeiro - 19:00 - John McAfee</p>
+                    <button class="btn" data-toggle="modal" data-target="#myModal">Comprar Bilhetes</button>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <img src="./images/events/java.png" alt="java" width="400" height="300">
+                    <p><strong>Segurança em Java, Mito ou Realidade?</strong></p>
+                    <p>30 Janeiro - 09:00 - Delfina Sá-Soares</p>
+                    <button class="btn" data-toggle="modal" data-target="#myModal">Comprar Bilhetes</button>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <img src="./images/events/google.png" alt="ggl" width="400" height="300">
+                    <p><strong>The answer to life the universe and everything</strong></p>
+                    <p>30 Janeiro - 11:00 - Parisa Tabriz</p>
+                    <button class="btn" data-toggle="modal" data-target="#myModal">Comprar Bilhetes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+
+
+
+        <div class="modal-content">
+            <% if (isAuthenticated) { %>
+            <% include bilheteira %>
+            <% } else { %>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4><span class="glyphicon glyphicon-lock"></span> Login/Registo</h4>
+            </div>
+            <div class="modal-body hideoverflow">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#login">Login</a></li>
+                    <li><a data-toggle="tab" href="#registar">Registar</a></li>
+                </ul>
+                <div class="tab-content hideoverflow">
+                    <div id="login" class="tab-pane fade in active">
+
+
+                        <% include login %>
+
+
+                    </div >
+                    <div id="registar" class="tab-pane fade hideoverflow">
+						<% include users-item %>
+                    </div>
+
+                </div>
+            </div>   <% } %>
+
+        </div>
+    </div>1
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- SPONSORS -->
+
+<section id="partner" class="section partner">
+    <div id="parceiros" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title text-center">Parceiros</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <a class="partner-box partner-box-1"></a>
+            </div>
+            <div class="col-sm-3">
+                <a class="partner-box partner-box-2"></a>
+            </div>
+            <div class="col-sm-3">
+                <a class="partner-box partner-box-3"></a>
+            </div>
+            <div class="col-sm-3">
+                <a class="partner-box partner-box-4"></a>
+            </div>
+        </div>
+
+        <!--        <div class="row">
+                    <div class="col-sm-3">
+                        <a class="partner-box partner-box-5"></a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a class="partner-box partner-box-6"></a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a class="partner-box partner-box-7"></a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a class="partner-box partner-box-8"></a>
+                    </div>
+                </div>-->
+    </div>
+</section>
+
+
+<!-- FAQ -->
+<section id="faq" class="section faq parallax4" >
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title text-center">Questões Frequentes</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <a class="faq-toggle collapsed" role="button" data-toggle="collapse"
+                                   data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+                                   aria-controls="collapseOne"> Qual o preço do Bilhete ?</a>
+                            </h4>
+                        </div>
+
+                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="headingOne">
+                            <div class="panel-body">
+                                <h3>Existem duas modalidades de bilhete:</h3>
+                                <p>Preço estudante : 10€</p>
+                                <p>Não estudante : 20€</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title">
+                                <a class="faq-toggle collapsed" role="button" data-toggle="collapse"
+                                   data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
+                                   aria-controls="collapseTwo"> O que esta incluido no bilhete ?</a>
+                            </h4>
+                        </div>
+
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="headingTwo">
+                            <div class="panel-body">Na compra do bilhete é dado acesso a todos os eventos a decorer
+                                dentro do Workshop e ainda oferta de uma tshirt.
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingThree">
+                            <h4 class="panel-title">
+                                <a class="faq-toggle collapsed" role="button" data-toggle="collapse"
+                                   data-parent="#accordion" href="#collapseThree" aria-expanded="false"
+                                   aria-controls="collapseThree"> Direçoes para o evento ?</a>
+                            </h4>
+                        </div>
+
+                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="headingThree">
+                            <div class="panel-body"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2985.899751238266!2d-8.424576084125098!3d41.549767779249535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd24e87650169dfd%3A0x46276da956d09542!2sTheatro+Circo+de+Braga!5e0!3m2!1spt-PT!2spt!4v1509312455573" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingFour">
+                            <h4 class="panel-title">
+                                <a class="faq-toggle collapsed" role="button" data-toggle="collapse"
+                                   data-parent="#accordion" href="#collapseFour" aria-expanded="false"
+                                   aria-controls="collapseFour"> Posso cancelar o meu bilhete ?</a>
+                            </h4>
+                        </div>
+
+                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="headingFour">
+                            <div class="panel-body">O cancelamento do bilhete terá de ser ser feito presencialmente
+                                junto da bilheteira.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingFive">
+                            <h4 class="panel-title">
+                                <a class="faq-toggle collapsed" role="button" data-toggle="collapse"
+                                   data-parent="#accordion" href="#collapseFive" aria-expanded="false"
+                                   aria-controls="collapseFive"> É possivel comprar pack de bilhetes ?</a>
+                            </h4>
+                        </div>
+
+                        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="headingFive">
+                            <div class="panel-body">Sim na pagina de compra poderá adquerir mais que um bilhete.</div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingSix">
+                            <h4 class="panel-title">
+                                <a class="faq-toggle collapsed" role="button" data-toggle="collapse"
+                                   data-parent="#accordion" href="#collapseSix" aria-expanded="false"
+                                   aria-controls="collapseSix"> Contactos ?</a>
+                            </h4>
+                        </div>
+
+                        <div id="collapseSix" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="headingSix">
+                            <div class="panel-body">
+                                <!-- Container (Contact Section) -->
+                                <div id="contact" class="container">
+                                    <div class="col-md-11">
+                                        <div class="row">
+                                            <div class="col-sm-6 form-group">
+                                                <input class="form-control" id="name" name="name" placeholder="Nome" type="text" required="">
+                                            </div>
+                                            <div class="col-sm-6 form-group">
+                                                <input class="form-control" id="email" name="email" placeholder="Email" type="email" required="">
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" id="comments" name="comments" placeholder="Mensagem" rows="5"></textarea>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-12 form-group">
+                                                <button class="btn pull-right" type="submit">Enviar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+<section id="photos" class="section photos">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title text-center">Photos</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="grid">
+
+                    <li class="grid-item grid-item-sm-6">
+                        <img alt="" class="img-responsive center-block" src="./images/photos/photos-1.jpg">
+                    </li>
+
+                    <li class="grid-item grid-item-sm-3">
+                        <img alt="" class="img-responsive center-block" src="./images/photos/photos-2.jpg">
+                    </li>
+
+                    <li class="grid-item grid-item-sm-3">
+                        <img alt="" class="img-responsive center-block" src="./images/photos/photos-3.jpg">
+                    </li>
+
+                    <li class="grid-item grid-item-sm-3">
+                        <img alt="" class="img-responsive center-block" src="./images/photos/photos-5.jpg">
+                    </li>
+
+                    <li class="grid-item grid-item-sm-3">
+                        <img alt="" class="img-responsive center-block" src="./images/photos/photos-6.jpg">
+                    </li>
+
+                    <li class="grid-item grid-item-sm-3">
+                        <img alt="" class="img-responsive center-block" src="./images/photos/photos-7.jpg">
+                    </li>
+
+                    <li class="grid-item grid-item-sm-3">
+                        <img alt="" class="img-responsive center-block" src="./images/photos/photos-8.jpg">
+                    </li>
+
+                    <li class="grid-item grid-item-sm-3">
+                        <img alt="" class="img-responsive center-block" src="./images/photos/photos-2.jpg">
+                    </li>
+
+                    <li class="grid-item grid-item-sm-3">
+                        <img alt="" class="img-responsive center-block" src="./images/photos/photos-3.jpg">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Footer -->
+<% include partials/footer %>

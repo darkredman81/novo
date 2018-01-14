@@ -1,0 +1,120 @@
+<% include headerAdmin %>
+<% include navAdmin %>
+
+<!-- <h2><%= (isNew) ? '' : 'Registo de Novo Speaker ' %></h2> -->
+<% for (var e of errors) { %>
+<div class="alert alert-danger"><%= e.msg %></div>
+<%}%>
+
+
+<!-- START BREADCRUMB -->
+<ul class="breadcrumb">
+    <li><a href="/patrocinios">Home</a></li>
+    <li class="active">Speakers</li>
+</ul>
+<!-- END BREADCRUMB -->
+
+<!-- PAGE TITLE -->
+<div class="page-title">
+    <h2><span class="fa fa-arrow-circle-o-left"></span> Registo de novo Speaker</h2>
+</div>
+<!-- END PAGE TITLE -->
+
+<!-- PAGE CONTENT WRAPPER -->
+<div class="page-content-wrap">
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <!-- START JQUERY VALIDATION PLUGIN -->
+            <div class="block">
+                <h4>Modificar dados</h4>
+                <form id="jvalidate" role="form" class="form-horizontal" action="/patrocinios/<%= (isNew) ? 'create' : patrocinios.Patrocinador %>"   method="post"  name="form">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Nome:</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="Speaker"  placeholder="Nome do speaker!" required  >
+                                <span class="help-block">Tamanho minimo = 2, Tamanho maximo = 8</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Email:</label>
+                            <div class="col-md-9">
+                                <input name="email" placeholder="Email do speaker!" id="montante" class="form-control"  type="text" required>
+                                <span class="help-block">Insira um valor entre 1 e 100.000 € !</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">NIF:</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="nif"  />
+                                <span class="help-block">Tamanho minimo = 8, Tamanho maximo = 150</span>
+                            </div>
+                        </div>
+						<div class="form-group">
+                            <label class="col-md-3 control-label">Telefone:</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="telefone"  />
+                                <span class="help-block">Tamanho minimo = 8, Tamanho maximo = 150</span>
+                            </div>
+                        </div>
+						<div class="form-group">
+                            <label class="col-md-3 control-label">Cachê:</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="salario"  />
+                                <span class="help-block">Tamanho minimo = 8, Tamanho maximo = 150</span>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="btn-group pull-right">
+                            <a href="/speakers"><button class="btn btn-primary" type="button">Back</button></a>
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- END JQUERY VALIDATION PLUGIN -->
+            </div>
+        </div>
+    </div>
+    <!-- END PAGE CONTENT -->
+</div>
+
+<!-- THIS PAGE PLUGINS -->
+<script type='text/javascript' src='js/plugins/icheck/icheck.min.js'></script>
+<script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+
+<script type='text/javascript' src='js/plugins/bootstrap/bootstrap-datepicker.js'></script>
+<script type='text/javascript' src='js/plugins/bootstrap/bootstrap-select.js'></script>
+
+<script type='text/javascript' src='js/plugins/validationengine/languages/jquery.validationEngine-en.js'></script>
+<script type='text/javascript' src='js/plugins/validationengine/jquery.validationEngine.js'></script>
+
+<script type='text/javascript' src='js/plugins/jquery-validation/jquery.validate.js'></script>
+
+<script type='text/javascript' src='js/plugins/maskedinput/jquery.maskedinput.min.js'></script>
+
+<script type="text/javascript">
+    var jvalidate = $("#jvalidate").validate({
+        ignore: [],
+        rules: {
+            Patrocinador: {
+                required: true,
+                minlength: 2,
+                maxlength: 45
+            },
+            montante: {
+                number: true,
+                min: 1,
+                max: 100000
+            },
+            urllogo: {
+                url: true,
+                maxlength: 300
+            }
+        }
+    });
+
+</script>
+
+<% include footerAdmin %>

@@ -1,0 +1,84 @@
+<% include headerAdmin %>
+
+    <div class="login-page">
+      <div class="container d-flex align-items-center">
+        <div class="form-holder has-shadow">
+          <div class="row">
+            <!-- Logo & Information Panel-->
+            <div class="col-lg-6">
+              <div class="info d-flex align-items-center">
+                <div class="content">
+                  <div class="logo">
+                    <h1>WorkEvent</h1>
+                  </div>
+                  <p>Loging da Administração!</p>
+                </div>
+              </div>
+            </div>
+            <!-- Form Panel    -->
+            <div class="col-lg-6 bg-white">
+              <div class="form d-flex align-items-center">
+                <div class="content">
+                  <form id="login-form" method="post">
+                    <div class="form-group">
+                      <input id="login-username" type="text" name="username" required="" class="input-material">
+                      <label for="login-username" class="label-material">Utilizador</label>
+                    </div>
+                    <div class="form-group">
+                      <input id="login-password" type="password" name="password" required="" class="input-material">
+                      <label for="login-password" class="label-material">Password</label>
+                    </div>
+                    <button id="login" type="submit" class="btn btn-primary">Login</button>
+                    <!-- This should be submit button but I replaced it with <a> for demo purposes-->
+                  </form><a href="#" data-toggle="modal" data-target="#recpass"  class="forgot-pass">Esqueceu a password?</a><br><small>Tem conta? </small><a href="register.html" class="signup">Registar</a>
+                   <!-- Modal-->
+                    <div id="recpass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                      <div role="document" class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Recuperação de password</strong>
+                            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Pedir dados para recuparação de password</p>
+                            <form>
+							  <div class="form-group">
+                                <label>Nome</label>
+                                <input type="text" placeholder="Nome" class="form-control">
+                              </div>
+							  <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" placeholder="Email" class="form-control">
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-secondary">Fechar</button>
+                            <button type="button" class="btn btn-primary">Enviar pedido</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+				  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyrights text-center">
+        <p>Design by <a href="#" class="external">Group156</a></p>
+       
+      </div>
+    </div>
+    <!-- Javascript files-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"> </script>
+    <script src="extra/bootstrap/js/bootstrap.min.js"></script>
+    <script src="extra/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="extra/chart.js/Chart.min.js"></script>>
+    <script src="js/front.js"></script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<% include headerAdmin %>
+<% include navAdmin %>
+
+<br>
+
+ <section class="no-padding-top">
+<div class="col-lg-12">
+                <div class="block">
+                  <div class="salas"><strong>Lista de Salas</strong></div>
+                  <table id="salas" class="table table-hover">
+                    <thead>
+                    <tr>
+										<th>Nome</th>
+										<th>Capacidade Maxima</th>
+										<th>Comentarios</th>
+										<th></th>
+                    </tr> 
+                  </thead>
+                  <tbody>
+                                    <% for (var u of data) { %>
+                                <tr>
+									
+                                    <td><%= u.sala %></td>
+                                    <td><%= u.lotacao %></td>
+                                    <td><%= u.Salascol %></td>
+									<td><a href="/salas/<%= u.idSala %>">Edit</a></td>
+                                </tr>
+                                <%} %>
+                        </tbody>
+                </table>
+            
+				   <script>
+                    $(document).ready(function() {
+                        $('#salas').DataTable();
+                    } )
+					</script>
+	    </section>
+
+            <div class="container">
+                <a href="/salas/create"><button class="btn btn-danger">Registar Colaborador</button></a>
+            </div>
+    </div>
+    <% include footerAdmin %>

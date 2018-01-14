@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Registar dados do Workshop</title>
+  <!-- Bootstrap core CSS-->
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <script src="https://use.fontawesome.com/9a14895eb3.js"></script>
+  <!-- Custom styles for this template-->
+  <link href="/css/sb-admin.css" rel="stylesheet">
+  <!-- Custom icons for this template-->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+
+<body class="bg-dark">
+  <div class="container">
+	<form class="well form-horizontal" action=" " method="post"  id="contact_form">
+
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Registar dados do Workshop</div>
+      <div class="card-body">
+        <form>
+		
+		<!-- Inserir Nome do workshop-->
+          <div class="form-group">
+            <div class="form-row">
+              <label class="col-md-10 control-label">Workshop</label> 
+				<div class="col-md-10 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-globe" aria-hidden="true"></i></span>
+						<input name="nome_workshop" placeholder="Nome" class="form-control" id="nome" type="text">
+					</div>
+				</div>	
+            </div>
+          </div>
+		  
+		  <!-- Inserir data do workshop-->
+       <div class="form-group">
+			<div class="form-row">
+			<label class="col-md-10 control-label">Data de Inicio</label>  
+				<div class="col-md-10 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+						<input name="data_inicio" aria-describedby="emailHelp" id="data_inicio" placeholder="Data de Inicio" class="form-control"  type="date">
+					</div>
+				</div>
+			</div>	
+	   </div>
+	   
+          <!-- Duração do Workshop-->
+		  <div class="form-group">
+				<div class="form-row">
+				<label class="col-md-10 control-label">Duração(dias)</label>  
+					<div class="col-md-10 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-tachometer" aria-hidden="true""></i></span>
+							<input  name="duracao" placeholder="Duração (dias)" id="duracao" value="4" class="form-control"  type="number">
+						</div>
+					</div>
+			</div>
+		</div>
+		
+		
+		<!-- Local do Workshop-->
+       
+			<div class="form-group">
+				<div class="form-row">
+			  <label class="col-md-10 control-label">Local</label>  
+				<div class="col-md-10 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
+			  <input name="local" placeholder="Local" id="local" class="form-control" type="text">
+				</div>
+			  </div>
+			  </div>
+			</div>
+
+			<!-- Lotação máxima-->
+			
+		 <div class="form-group">
+			 <div class="form-row">
+			 <label class="col-md-10 control-label">Lotação Máxima</label>  
+			 <div class="col-md-10 inputGroupContainer">
+			 <div class="input-group">
+				 <span class="input-group-addon"><i class="fa fa-users" aria-hidden="true"></i></span>
+			 <input name="lotacao" placeholder="Lotação máxima" id="lotacao" class="form-control" type="text">
+			 </div>
+			 </div>
+			 </div>
+			</div>
+			
+				<!-- Valor a pagar aos colaboradores-->	
+				<div class="form-group">
+					<div class="form-row">
+					<label class="col-md-10 control-label">Valor a pagar</label>  
+					<div class="col-md-10 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-money" aria-hidden="true"></i></span>
+					<input name="valor_pagar" placeholder="Valor a pagar aos colaboradores" id="valor_pagar" value="50" class="form-control" type="number">
+					</div>
+					</div>
+					</div>
+				</div>
+		
+		<!--Preço dos bilhetes-->
+		
+		<div class="form-group">
+			<div class="form-row">
+			<label class="col-md-10 control-label">Preço dos Bilhetes</label>  
+			<div class="col-md-10 inputGroupContainer">
+			<div class="input-group">
+				<span class="input-group-addon"><i class="fa fa-money" aria-hidden="true"></i></span>
+			<input name="preco" placeholder="Preço" id="preco_bilhete" value="10" class="form-control" type="number">
+			</div>
+			</div>
+			</div>
+		</div>
+		  
+
+		<!-- Button -->
+		<div class="form-group">
+			<label class="col-md-4 control-label"></label>
+			<div class="col-md-4"><br>
+			 <a class="btn btn-primary btn-block" onclick="validar()">Submeter</a>
+			</div>
+		</div>
+				
+        </form>
+        
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap core JavaScript-->
+  <script src="/jquery/jquery.min.js"></script>
+  <script src="/popper/popper.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="/js/validar_workshop.js"></script>
+  <script src="/jquery-easing/jquery.easing.min.js"></script>
+</body>
+
+</html>

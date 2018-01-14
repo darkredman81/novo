@@ -1,0 +1,91 @@
+<% include headerAdmin %>
+
+
+<script type="text/javascript">
+	function removeRecord() {
+		if (confirm('Do you really want to remove the record?')) {
+			window.open("<%= '/salas/' + salas.idUser + '/delete'%>")
+		}
+	}
+</script>
+
+<h2><%= (isNew) ? '' : 'salas Data' %></h2>   
+<% for (var e of errors) { %>
+<div class="alert alert-danger"><%= e.msg %></div>
+<%}%>
+
+
+<body class="bg-dark">
+  <div class="container">
+	<form class="well form-horizontal" action="/salas/<%= (isNew) ? 'create' : salas.idSala  %>" method="post"  id="contact_form" name="form">
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Registar Colaborador</div>
+      <div class="card-body">
+        <form>	
+		
+<!-- Inserir Nome da Sala-->
+          <div class="form-group">
+            <div class="form-row">
+              <label class="col-md-12 control-label">Id do Nome da Sala</label> 
+				<div class="col-md-12 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user-o" aria-hidden="true"></i></span>
+						<input name="sala" placeholder="Nome da Sala" class="form-control" id="sala" type="text" value="<%= salas.sala %>">
+					</div>
+				</div>	
+            </div>
+          </div>
+		
+<!-- Inserir Nome do Lotação-->
+          <div class="form-group">
+            <div class="form-row">
+              <label class="col-md-12 control-label">Lotação</label> 
+				<div class="col-md-12 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user-o" aria-hidden="true"></i></span>
+						<input name="lotacao" placeholder="Lotação maxima da sala colaborador" class="form-control" id="lotacao" type="text" value="<%= salas.lotacao %>" require>
+					</div>
+				</div>	
+            </div>
+          </div>
+		
+		  
+<!-- Inserir Comentario-->
+       <div class="form-group">
+			<div class="form-row">
+			<label class="col-md-12 control-label">E-Mail</label>  
+				<div class="col-md-12 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+						<input name="salascol" aria-describedby="salascol" id="salascol" placeholder="Comentario" class="form-control"  type="text" value="<%= salas.salascol %>">
+					</div>
+				</div>
+			</div>	
+	   </div>
+	   
+<!-- Morada do Colaborador-->
+		  <div class="form-group">
+				<div class="form-row">
+				<label class="col-md-12 control-label">Morada</label>  
+					<div class="col-md-12 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i></span>
+							<input  name="morada" placeholder="insira a sua morada" id="morada" class="form-control"  type="text" value="<%= colaborador.morada %>" required>
+						</div>
+					</div>
+			</div>
+		</div>
+
+
+<button type="submit" class="btn btn-default" onclick="validar();">Submeter</button>
+
+<% if (! isNew) { %>
+
+<button type="button" class="btn btn-danger" onclick="removeRecord()">Delete</button>
+<% } %>
+
+<button class="btn btn-default"><a href="/salas">Back</a></button>
+
+		
+
+<% include footerAdmin %>

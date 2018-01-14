@@ -1,0 +1,39 @@
+<% include headerAdmin %>
+<% include navAdmin %>
+
+<br>
+
+ <section class="no-padding-top">
+<div class="col-lg-12">
+                <div class="block">
+                  <div class="colaboradores"><strong>Dados do WorkShop</strong></div>
+                  <table id="colaboradores" class="table table-hover">
+                    <thead>
+                    <tr>
+										<th>Nome</th>
+										<th>Data de Inicio</th>
+										<th>Data de Fim</th>
+										<th>Local</th>
+                    </tr> 
+                  </thead>
+                  <tbody>
+                                    <% for (var u of data) { %>
+                                <tr>
+									
+                                    <td><%= u.nome %></td>
+                                    <td><%= u.datainicio %></td>
+                                    <td><%= u.datafim %></td>
+                                    <td><%= u.local %></td>
+									<td><a href="/workshop/<%= u.idWorkshop %>">Edit</a></td>
+                                </tr>
+                                <%} %>
+                        </tbody>
+                </table>
+            
+	    </section>
+
+            <div class="container">
+                <a href="/colaboradores/create"><button class="btn btn-danger">Registar Colaborador</button></a>
+            </div>
+    </div>
+    <% include footerAdmin %>

@@ -1,0 +1,58 @@
+<% include headerAdmin %>
+<% include navAdmin %>
+
+
+<br>
+
+<div class="page-content-wrap">
+	<div class="row">
+		<div class="col-md-12">
+
+			<!-- START DEFAULT DATATABLE -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><a href="/colaboradores/create"><button class="btn btn-danger">Registar Colaborador</button></a></h3>
+					<ul class="panel-controls">
+						<li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+						<li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+						<li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+					</ul>
+				</div>
+				<div class="panel-body">
+					<table class="table datatable">
+						<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Email</th>
+							<th>Morada</th>
+							<th>Telefone</th>
+							<th>Nif</th>
+							<th>Função</th>
+							<th></th>
+						</tr>
+						</thead>
+						<tbody><% for (var u of data) { %>
+						<tr>
+							<a  data-toggle="modal" data-target="#card" >
+							<td><%= u.name %></a></td>
+							<td><%= u.email %></td>
+							<td><%= u.morada %></td>
+							<td><%= u.telefone %></td>
+							<td><%= u.nif %></td>
+							<td><%= u.type %></td></a>
+							<td><a href="/colaboradores/<%= u.idUser %>">Edit</a></td>
+						</tr><%} %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<% include footerAdmin %>
+
+
+

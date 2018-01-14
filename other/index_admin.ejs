@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Administração - Menu Principal</title>
+  <!-- Bootstrap core CSS-->
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <script src="https://use.fontawesome.com/9a14895eb3.js"></script>
+  <!-- Page level plugin CSS-->
+  <link href="/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="/css/sb-admin.css" rel="stylesheet">
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="index_admin.ejs">Administração</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="index_admin.ejs">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">Painel de Controlo</span>
+          </a>
+        </li>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dados">
+          <a class="nav-link" href="/workshop">
+            <i class="fa fa-fw fa-area-chart"></i>
+            <span class="nav-link-text">Dados do Workshop</span>
+          </a>
+        </li>
+        
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link" href="charts.ejs">
+            <i class="fa fa-fw fa-area-chart"></i>
+            <span class="nav-link-text">Gráficos</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#ExamplePages" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-file"></i>
+            <span class="nav-link-text">Listas</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="ExamplePages">
+            <li>
+              <a href="/users">Utilizadores</a>
+            </li>
+            <li>
+              <a href="/speakers">Speakers</a>
+            </li>
+            <li>
+              <a href="/colaboradores">Colaboradores</a>
+            </li>
+			      <li>
+              <a href="/patrocinios">Patrocinios</a>
+            </li>
+			       <li>
+              <a href="/sessoes">Sessões</a>
+            </li>
+             <li>
+              <a href="/bilhetes">Bilhetes</a>
+            </li>
+           </ul>
+        </li>
+        
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-file"></i>
+            <span class="nav-link-text">Área de Registos</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+            <li>
+              <a href="/users/create">Registo de novo utilizador</a>
+            </li>
+            <li>
+              <a href="forgot-password.ejs">Recuperação de Password</a>
+            </li>
+            <li>
+              <a href="/speakers/create">Registo de Speaker</a>
+            </li>
+			      <li>
+              <a href="/colaboradores/create">Registo de Colaborador</a>
+            </li>
+			        <li>
+              <a href="/patrocinios/create">Registo de Patrocinio</a>
+            </li>
+            <li>
+              <a href="/sessoes/create">Registo de Sessões</a>
+            </li>
+           </ul>
+        </li>
+        
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+          <a class="nav-link" href="/">
+            <i class="fa fa-fw fa-link"></i>
+            <span class="nav-link-text">Link</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav sidenav-toggler">
+        <li class="nav-item">
+          <a class="nav-link text-center" id="sidenavToggler">
+            <i class="fa fa-fw fa-angle-left"></i>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item">
+          <form class="form-inline my-2 my-lg-0 mr-lg-2">
+            <div class="input-group">
+              <input class="form-control" type="text" placeholder="Procurar por...">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Painel de Controlo</a>
+        </li>
+        <li class="breadcrumb-item active">Painel principal</li>
+      </ol>
+      <!-- Icon Cards-->
+      <div class="row">
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-comments"></i>
+              </div>
+              <div class="mr-5">26 Mensagens Novas!</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="#">
+              <span class="float-left">Ver Detalhess</span>
+              <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-warning o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-list"></i>
+              </div>
+              <div class="mr-5">11 Tarefas Novas!</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="#">
+              <span class="float-left">Ver Detalhes!</span>
+              <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-success o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-shopping-cart"></i>
+              </div>
+              <div class="mr-5">123  Pedidos Novos!</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="#">
+              <span class="float-left">Ver Detalhess</span>
+              <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-danger o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-support"></i>
+              </div>
+              <div class="mr-5">13 Tickets Novos!</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="#">
+              <span class="float-left">Ver Detalhes</span>
+              <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Exemplo de gráfico de áreas-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-area-chart"></i> Gráfico de Participantes</div>
+        <div class="card-body">
+          <canvas id="myAreaChart" width="100%" height="30"></canvas>
+        </div>
+        <div class="card-footer small text-muted">Atualizado ontem às 11:59 PM</div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8">
+          <!-- Exemplo de gráficos de barras-->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-bar-chart"></i> Gráfico de Venda de Bilhetes</div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-8 my-auto">
+                  <canvas id="myBarChart" width="100" height="50"></canvas>
+                </div>
+                <div class="col-sm-4 text-center my-auto">
+                  <div class="h4 mb-0 text-primary">2000€</div>
+                  <div class="small text-muted">Venda de Bilhetes</div>
+                  <hr>
+                  <div class="h4 mb-0 text-warning">1500€</div>
+                  <div class="small text-muted">Pagamento aos Speakers</div>
+                  <hr>
+                  <div class="h4 mb-0 text-success">3000€</div>
+                  <div class="small text-muted">Patrocinios</div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+          </div>
+          
+            
+        <div class="col-lg-4">
+          <!-- Exemplo Gráfico Circular-->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-pie-chart"></i> Gráfico de Gastos</div>
+            <div class="card-body">
+              <canvas id="myPieChart" width="100%" height="100"></canvas>
+            </div>
+            <div class="card-footer small text-muted">Atualizado hoje às 11:59 AM</div>
+          </div>
+          <!-- Example Notifications Card-->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-bell-o"></i> Feeds</div>
+            <div class="list-group list-group-flush small">
+              <a class="list-group-item list-group-item-action" href="#">
+                <div class="media">
+                  <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/45x45" alt="">
+                  <div class="media-body">
+                    <strong>David Miller</strong>posted a new article to
+                    <strong>David Miller Website</strong>.
+                    <div class="text-muted smaller">Today at 5:43 PM - 5m ago</div>
+                  </div>
+                </div>
+              </a>
+              <a class="list-group-item list-group-item-action" href="#">
+                <div class="media">
+                  <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/45x45" alt="">
+                  <div class="media-body">
+                    <strong>Samantha King</strong>sent you a new message!
+                    <div class="text-muted smaller">Today at 4:37 PM - 1hr ago</div>
+                  </div>
+                </div>
+              </a>
+              <a class="list-group-item list-group-item-action" href="#">
+                <div class="media">
+                  <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/45x45" alt="">
+                  <div class="media-body">
+                    <strong>Jeffery Wellings</strong>added a new photo to the album
+                    <strong>Beach</strong>.
+                    <div class="text-muted smaller">Today at 4:31 PM - 1hr ago</div>
+                  </div>
+                </div>
+              </a>
+              <a class="list-group-item list-group-item-action" href="#">
+                <div class="media">
+                  <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/45x45" alt="">
+                  <div class="media-body">
+                    <i class="fa fa-code-fork"></i>
+                    <strong>Monica Dennis</strong>forked the
+                    <strong>startbootstrap-sb-admin</strong>repository on
+                    <strong>GitHub</strong>.
+                    <div class="text-muted smaller">Today at 3:54 PM - 2hrs ago</div>
+                  </div>
+                </div>
+              </a>
+              <a class="list-group-item list-group-item-action" href="#">View all activity...</a>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+          </div>
+        </div>
+      </div>
+      <!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Tabela de Colaboradores</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th>Morada</th>
+                  <th>Telefone</th>
+                  <th>Função a Desempenhar</th>
+                  <th>Estatuto(Pago? S,N)</th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th>Morada</th>
+                  <th>Telefone</th>
+                  <th>Função a Desempenhar</th>
+                  <th>Estatuto(Pago? S,N)</th>
+                </tr>
+              </tfoot>
+              <tbody>
+                <tr>
+                  <td>João Costa</td>
+                  <td>jcosta@uminho.pt</td>
+                  <td>Rua da Insua 7 Ponte - Guimarães </td>
+                  <td>968456798</td>
+                  <td>Segurança</td>
+                  <td>Pago</td>
+                </tr>
+                <tr>
+                  <td>Filipa Silva</td>
+                  <td>fsilva@gmail.com</td>
+                  <td>Travessa da Veiga 9 - Guimarães</td>
+                  <td>253789456</td>
+                  <td>Assistente de Sala</td>
+                  <td>Voluntária</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">Atualizado ontem às 20:30 PM</div>
+      </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © Workvent 2017</small>
+        </div>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Pretende sair da sessão?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Selecione "Logout" em baixo se pretdener sair da sua sessão atual!</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            <a class="btn btn-primary" href="/login">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/popper/popper.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="/chart.js/Chart.min.js"></script>
+    <script src="/datatables/jquery.dataTables.js"></script>
+    <script src="/datatables/dataTables.bootstrap4.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="/js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="/js/sb-admin-datatables.min.js"></script>
+    <script src="/js/sb-admin-charts.min.js"></script>
+  </div>
+</body>
+
+</html>

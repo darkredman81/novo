@@ -1,0 +1,90 @@
+
+
+   
+	<% for (var e of errors) { %>
+	<div class="alert alert-danger"><%= e.msg %></div>
+	<%}%>
+
+	<form action="/users/<%= (isNew) ? 'create' : user.username %>" method="post">
+		<div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" value="<%= user.nome %>">
+    </div>
+	
+		<div class="form-group">
+      <label for="morada">Morada:</label>
+      <input type="text" class="form-control" id="morada" placeholder="Enter morada" name="morada" value="<%= user.morada %>">
+    </div>
+	
+		<div class="form-group">
+      <label for="telemovel">Telemovel:</label>
+      <input type="number" class="form-control" id="telemovel" placeholder="Enter telemovel" name="telemovel" value="<%= user.telemovel %>">
+    </div>
+	
+		<div class="form-group">
+      <label for="telefone">Telefone:</label>
+      <input type="number" class="form-control" id="telefone" placeholder="Enter telefone" name="telefone" value="<%= user.telefone %>">
+    </div>
+	
+	
+	
+	<div class="form-group">
+      <label for="nif">Nif:</label>
+      <input type="number" class="form-control" id="nif" placeholder="Enter NIF" name="nif" value="<%= user.nif %>">
+    </div>
+		<div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" value="<%= user.email %>">
+    </div>
+		<div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" value="<%= user.username %>" <%= (!isNew) ? 'disabled' : ''%>>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+    </div>    
+    <button type="submit" class="btn btn-default">Save</button>
+		
+  </form>
+  
+  <script type="text/javascript">
+    var jvalidate = $("#jvalidate").validate({
+        ignore: [],
+        rules: {
+            name: {
+                required: true,
+                minlength: 8,
+                maxlength: 45
+            },
+            morada: {
+                minlength: 8,
+                maxlength: 45
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            type: {
+                required: true,
+            },
+            telefone: {
+                required: true,
+                number: true,
+                minlength: 9,
+                maxlength: 9
+            },
+            nif: {
+                required: true,
+                number: true,
+                minlength: 9,
+                maxlength: 9
+            },
+            photo: {
+                url: true,
+                maxlength: 300
+            }
+        }
+    });
+
+</script>
