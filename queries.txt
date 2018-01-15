@@ -1,0 +1,3 @@
+SELECT u.name FROM  users as u where  type like 'speaker' and u.idUser
+NOT IN (SELECT s.keyspeaker FROM sessoes as s, users as u
+where s.keyspeaker=u.idUser)
