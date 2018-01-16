@@ -10,7 +10,8 @@
                 <span class="icon-bar"></span>
             </button>
             <nav>
-                <a class="navbar-brand" href="#site-header">Web Security 2018</a>
+                <% for (var w of workshop) { %><tbody>
+                <a class="navbar-brand" href="#site-header"><%= w.nome %></a></tbody> <%} %>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
@@ -37,15 +38,12 @@
         </div>
     </div>
 </nav>
-<!--<ul class="nav nav-pills pull-right">
-              <li role="presentation"><a href="/">Home</a></li>-->
-
-
-<header id="site-header" class="site-header parallax">
+<header id="site-header" class="site-header parallax"><tbody>
+    <% for (var w of workshop) { %>
     <div class="textonaparallax">
-        <h1>Web Security 2018</h1>
-        <h3>26 Janeiro 2018 /<br> Theatro Circo Braga</h3>
-        <br>
+        <h1><%= w.nome %></h1>
+        <h3><%= w.datainicio %> <br> <%= w.local %></h3>
+        <br><% } %>
         <% if (!isAuthenticated) { %>
         <a class="active" data-toggle="tab" href="/login.ejs">
             <button type="button" class="btn btn-white" data-toggle="modal" data-target="#myModal" >Entrar/Registar Agora</button>
@@ -102,9 +100,7 @@
     </div>
     <div class="col-sm-6">
         <div class="col-sm-12">
-
             <h3 class="section-title multiple-title">Qual o nosso objetivo?</h3>
-
             <p>Dar uma abordagem elucidativa a todos os alunos da Universidade sendo ou não de cursos ligados a
                 novas tecnologias, de forma a poder manter as pessoas informadas de todos os novos perigos nos dias
                 de hoje. A Web como o comum utilizador conhece parece ser simplista e facil de usar mas nem sempre é
@@ -112,51 +108,41 @@
         </div>
         <div class="col-sm-12">
             <ul class="list-arrow">
-
                 <li>Debates sobre novos perigos da WEB &amp; Casos exemplo</li>
                 <li>Palestras de oradores de renome.</li>
                 <li>Uma linguagem simples e que os alunos possam entender</li>
                 <li>Palestras abertas a perguntas e respostas</li>
-
             </ul>
         </div>
     </div>
-
 </div>
 
 <section id="facts" class="section bg-image-1 facts text-center parallax2">
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInDown" data-wow-duration="500ms">
-                <div class="counters-item">
+                <div class="counters-item"><tbody>
+                    <% for (var w of workshop) { %>
                     <h5 class="fa fa-users fa-3x"></h5>
-                    <h3>3700<br>Bilhetes</h3>
+                    <h3><%= w.maxbilhetes %><br>Lugares</h3>
                 </div>
             </div>
             <div class="col-sm-3">
-
                 <h5 class="ion-ios-location"></h5>
-                <h3>Braga<br>Portugal</h3>
-
+                <h3><%= w.local %></h3>
             </div>
             <div class="col-sm-3">
-
                 <h5 class="ion-pricetags"></h5>
-                <h3>73<br>Workshops</h3>
-
-            </div>
+                <h3><%= w.datainicio %><br></h3>
+            </div> </tbody> <%} %>
             <div class="col-sm-3">
-
                 <h5 class="ion-speakerphone"></h5>
-                <h3>        	
-                <tbody>
-    			<% for (var t of totalspeakers) { %>       
-            	
-                <td><%= t.tspeakers %></td>
-
-    			     
-       	<br>Oradores</h3>
-      </tbody> <%} %> 
+                <h3>
+                    <tbody>
+                    <% for (var t of totalspeakers) { %>
+                    <td><%= t.tspeakers %></td>
+                    <br>Oradores</h3>
+                </tbody> <%} %>
             </div>
         </div>
     </div>
@@ -170,27 +156,22 @@
             </div>
         </div>
 
-    <div class="text-center"><% for (var s of speakers) { %><tbody>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="speaker">
-                    <br>
-                    <p class="text-center"><strong><%= s.sname %></strong></p>
-                    <a href="#demo4" data-toggle="collapse" class="text-center ">
+        <div class="text-center"><% for (var s of dadoss) { %><tbody>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="speaker">
+                        <br>
+                        <p class="text-center"><strong><%= s.sname %></strong></p>
                         <img src="<%= s.pspeakers %>" class="img-circle person center " alt="" >
-                    </a>
-                    <div id="demo4" class="collapse">
-                        <p>Software Engineering, Algorithms, Programming Languages</p>
-                        <ul class="social-block">
-                            <li><a href=""><i class="ion-social-twitter"></i></a></li>
-                            <li><a href=""><i class="ion-social-facebook"></i></a></li>
-                            <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
-                            <li><a href=""><i class="ion-social-googleplus"></i></a></li>
-                        </ul>
+                        <p><%= s.cargo %></p>
+                        <p>
+                            <a href="<%= s.twitter %>"><i class="ion-social-twitter"></i></a>
+                            <a href="<%= s.fb %>"><i class="fa fa-facebook"></i></a>
+                            <a href="<%= s.linkedin %>"><i class="ion-social-linkedin-outline"></i></a>
+                            <a href="<%= s.googleplus %>"><i class="ion-social-googleplus"></i></a>
+                        </p>
                     </div>
-
-                </div><!-- /.speaker -->
-            </div></tbody> <%} %>
+                </div> </tbody> <%} %>
         </div>
     </div>
 </section>
@@ -201,9 +182,10 @@
 <div id="sessoes" class=" parallax3" >
     <div class="container">
         <h3 class="text-center">Sessões</h3>
-        <p class="text-center">Compre Bilhetes, a partir do momento que esta mensagem é exibida nós temos conhecimento das suas informações bancárias e/ou morada, faça favor de comprar o Bilhete geral.</p>
         <ul class="list-group">
-            <li class="list-group-item"> <span class="label label-danger">Sold Out!</span> 29 Janeiro - 12:00 - <strong>Segurança para sistemas distribuidos em Scheme</strong> - Filipe de Sá-Soares <span class="badge">250/250</span> </li>
+
+            <% for (var w of workshop) { %><tbody>
+            <li class="list-group-item"> <span class="label label-danger">Sold Out!</span> <%= w.datainicio %> - <strong>Segurança para sistemas distribuidos em Scheme</strong> - Filipe de Sá-Soares <span class="badge"><%= w.maxbilhetes %>/<%= w.maxbilhetes %></span> </li>
             <li class="list-group-item"> <span class="label label-danger">Sold Out!</span> 29 Janeiro - 17:23 - <strong>Segurança dos Magalhães em redes virtuais de Minecraft</strong> - guyfawkes020 <span class="badge">120/120</span></li>
             <li class="list-group-item"> <span class="label label-warning ">Ultimos bilhetes!</span> 29 Janeiro - 19:00 - <strong>"Gringo: The Dangerous Life of John McAfee" Review and inspirational speech</strong> - John McAfee <span class="badge">75/80</span></li>
         </ul>
@@ -211,31 +193,14 @@
         <div class="row text-center">
             <div class="col-sm-4">
                 <div class="thumbnail">
-                    <img src="./images/events/gringothedangerouslifeofjohnmcafee.jpg" alt="johnmcafee.jpg" width="400" height="300">
+                    <img src="dddd" alt="johnmcafee.jpg" width="400" height="300">
                     <p><strong>"Gringo: The Dangerous Life of John McAfee"<br> Review and inspirational speech</strong></p>
                     <p>29 Janeiro - 19:00 - John McAfee</p>
                     <h3 class="panel-title"><a href="/bilheteira"><button class="btn">Comprar Bilhetes</button></a></h3>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <div class="thumbnail">
-                    <img src="./images/events/java.png" alt="java" width="400" height="300">
-                    <p><strong>Segurança em Java, Mito ou Realidade?</strong></p>
-                    <p>30 Janeiro - 09:00 - Delfina Sá-Soares</p>
-                    <button class="btn" data-toggle="modal" data-target="#myModal">Comprar Bilhetes</button>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="thumbnail">
-                    <img src="./images/events/google.png" alt="ggl" width="400" height="300">
-                    <p><strong>The answer to life the universe and everything</strong></p>
-                    <p>30 Janeiro - 11:00 - Parisa Tabriz</p>
-                    <button class="btn" data-toggle="modal" data-target="#myModal">Comprar Bilhetes</button>
-                </div>
-            </div>
-        </div>
+        </div></tbody> <%} %>
     </div>
-
 </div>
 
 
@@ -244,8 +209,6 @@
     <div class="modal-dialog">
 
         <!-- Modal content-->
-
-
 
         <div class="modal-content">
             <% if (isAuthenticated) { %>
@@ -263,30 +226,18 @@
                 <div class="tab-content hideoverflow">
                     <div id="login" class="tab-pane fade in active">
 
-
                         <% include login %>
-
 
                     </div >
                     <div id="registar" class="tab-pane fade hideoverflow">
-						<% include users-item %>
+                        <% include users-item %>
                     </div>
-
                 </div>
             </div>   <% } %>
 
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
 
 <!-- SPONSORS -->
 
@@ -297,35 +248,13 @@
                 <h3 class="section-title text-center">Parceiros</h3>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-3">
-                <a class="partner-box partner-box-1"></a>
-            </div>
-            <div class="col-sm-3">
-                <a class="partner-box partner-box-2"></a>
-            </div>
-            <div class="col-sm-3">
-                <a class="partner-box partner-box-3"></a>
-            </div>
-            <div class="col-sm-3">
-                <a class="partner-box partner-box-4"></a>
-            </div>
+        <div class="partner partner"><% for (var s of sponsor) { %><tbody>
+            <div class="row">
+                <div class="col-sm-3">
+                    <img src="<%= s.urllogo %>" class="partner-box" alt="" >
+                </div></tbody> <%} %>
         </div>
-
-        <!--        <div class="row">
-                    <div class="col-sm-3">
-                        <a class="partner-box partner-box-5"></a>
-                    </div>
-                    <div class="col-sm-3">
-                        <a class="partner-box partner-box-6"></a>
-                    </div>
-                    <div class="col-sm-3">
-                        <a class="partner-box partner-box-7"></a>
-                    </div>
-                    <div class="col-sm-3">
-                        <a class="partner-box partner-box-8"></a>
-                    </div>
-                </div>-->
+    </div>
     </div>
 </section>
 

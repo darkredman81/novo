@@ -1,13 +1,13 @@
 module.exports = {
 
-	    nspeakers(callback) {
-	var sql = "SELECT tspeakers from webitclo_A15610.nspeakers";
-		global.connection.query(sql, function(error, rows, fields) {
-			if (error) throw error;
-			console.log(rows);
-			callback(rows);			 
-		});
-	},
+	nspeakers(callback) {
+		var sql = "SELECT tspeakers from webitclo_A15610.nspeakers";
+			global.connection.query(sql, function(error, rows, fields) {
+				if (error) throw error;
+				console.log(rows);
+				callback(rows);
+			});
+		},
 	
 	pspeakers(callback) {
 		var sql = "SELECT * FROM webitclo_A15610.pspeakers";	
@@ -17,26 +17,36 @@ module.exports = {
 			callback(rows);			
 		});
 	},
-	
-	
-		nutilizadores(callback) {
-		var sql = "SELECT * from webitclo_A15610.nutilizadores";	
-		global.connection.query(sql, function(error, rows, fields) {
-			if (error) throw error;
-			console.log(rows);
-			callback(rows);			
-		});
-	},	
-	
-		ncolaboradores(callback) {
-		var sql = "SELECT * from webitclo_A15610.ncolaboradores";	
+
+
+    dadosspeakers(callback) {
+		var sql = "SELECT * from webitclo_A15610.dadosspeakers";
 		global.connection.query(sql, function(error, rows, fields) {
 			if (error) throw error;
 			console.log(rows);
 			callback(rows);			
 		});
 	},
-	
+
+
+    sponsor(callback) {
+        var sql = "SELECT Patrocinador,  urllogo, SUM(montante) as montante FROM patrocinios GROUP BY  Patrocinador order by montante desc limit 4";
+        global.connection.query(sql, function(error, rows, fields) {
+            if (error) throw error;
+            console.log(rows);
+            callback(rows);
+        });
+    },
+
+    workshop(callback) {
+        var sql = "SELECT * from dadosworkshop";
+        global.connection.query(sql, function(error, rows, fields) {
+            if (error) throw error;
+            console.log(rows);
+            callback(rows);
+        });
+    }
+
 	
 /*
 

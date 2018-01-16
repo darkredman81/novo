@@ -1,24 +1,29 @@
-const usersModel = require('../models/user.model');
 const model = require('../models/stats.model');
+const usersModel = require('../models/user.model');
 const express = require('express');
 const router = express.Router();
 
 
-router.get('/dashboard', global.secure(), function(request, response) {
-	model.tspeaker(function(stats) {
-	response.set("Content-Type", "text/html");
-	response.render('admin/index', {
-		user: request.user, errors: [],
-		data: stats
-	      })
-		  }),
-		  model.pspeakers(function(stats) {
-	response.set("Content-Type", "text/html");
-	response.render('admin/index', {
-		data: stats
-	      })
-		  })
-});
+    router.get('/dashboard', function(request, response) {
+        model.nspeakers(function(totalspeakers) {
+            model.pspeakers(function(speakers) {
+                model.dadosspeakers(function(dadoss) {
+                    model.sponsor(function(sponsor) {
+                        model.workshop(function(workshop) {
+                            response.set("Content-Type", "text/html");
+                            response.render('admin/index', {
+                                speakers: speakers,
+                                totalspeakers: totalspeakers,
+                                dadoss: dadoss,
+                                sponsor: sponsor,
+                                workshop: workshop
+                            })
+                        })
+                    })
+                })
+            })
+        })
+    });
 
 
 
@@ -45,16 +50,13 @@ router.get('/forms', global.secure(), function(request, response) {
 });
 
 router.get('/', global.secure(), function(request, response) {
+    model.workshop(function(workshop) {
 	response.set("Content-Type", "text/html");
 	response.render('admin/index', {
 		user: request.user, errors: [],
+        workshop: workshop
+    })
 	})
-/*  model.concatValor(function(users) {
-      response.set("Content-Type", "text/html");
-      response.render('admin/index', {
-          user: request.user, errors: [],
-          stats: statistics
-      })*/
 });
 
 router.post('/', global.secure(), function(request, response) {

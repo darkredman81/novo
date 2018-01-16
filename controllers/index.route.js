@@ -7,27 +7,24 @@ const router = express.Router();
 router.get('/', function(request, response) {
 	model.nspeakers(function(totalspeakers) {
 		model.pspeakers(function(speakers) {
+            model.dadosspeakers(function(dadoss) {
+                model.sponsor(function(sponsor) {
+                    model.workshop(function(workshop) {
 		    response.set("Content-Type", "text/html");
 			response.render('index', {
 			speakers: speakers,
-			totalspeakers: totalspeakers
+			totalspeakers: totalspeakers,
+            dadoss: dadoss,
+            sponsor: sponsor,
+            workshop: workshop
 		})
+        })
+        })
 		})
-		/*response.set("Content-Type", "text/html");
-		response.render('index', {
-			data: stats
-		})*/
+        })
 	})
 });
 
-/*router.get('/', function(request, response) {
-	model.pspeakers(function(stats) {
-		response.set("Content-Type", "text/html");
-		response.render('index', {
-			data: stats
-		})
-	})
-});*/
 
 
 module.exports = router;

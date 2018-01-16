@@ -1,3 +1,19 @@
 SELECT u.name FROM  users as u where  type like 'speaker' and u.idUser
 NOT IN (SELECT s.keyspeaker FROM sessoes as s, users as u
 where s.keyspeaker=u.idUser)
+
+SELECT w.nome, 
+DATE_FORMAT(w.datainicio, "%W %M %e %Y") as datainicio, 
+DATE_FORMAT(w.datafim, "%W %M %e %Y") as datafim , 
+w.local, SUM(salas.lotacao) as maxbilhetes 
+FROM workshop as w, salas as salas
+
+
+SELECT tutilizador, tcolaborador, tspeaker, spatrocinios, sspeakers, scolaboradores from
+((select count(iduser) tutilizador from users where type like 'utilizador') t,
+(select count(iduser) tspeaker from users where type like 'speaker') t1,
+(select count(iduser) tcolaborador from users where type not  like 'utilizador') t2,
+(select SUM(montante) spatrocinios from patrocinios) t3,
+(select SUM(salario) sspeakers from speakers) t4,
+(select SUM(salario) scolaboradores from users) t5
+)
