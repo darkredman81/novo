@@ -1,4 +1,8 @@
 var bcrypt =  require('bcrypt-nodejs')
+
+
+
+
 module.exports = {
 	list(callback) {
 		var sql = 'SELECT * from users';
