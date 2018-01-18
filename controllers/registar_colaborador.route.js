@@ -12,15 +12,6 @@ router.get('/', function(request, response) {
 	})	
 });
 
-/*
-router.get('/', function(request, response) {
-	model.list(function(nrbilhetes) {
-		response.set("Content-Type", "text/html");
-		response.render('admin/', {
-			data: nrbilhetes
-		})
-	})	
-});*/
 
 router.get('/create', function(request, response) {
 	response.set("Content-Type", "text/html");
@@ -32,9 +23,12 @@ router.get('/create', function(request, response) {
 });
 
 router.post('/create', function(request, response) {
-	request.checkBody('name', 'O nome deve ter entre 1 e 50  caracteres').isLength({min: 1, max: 50});
-	request.checkBody('telefone', 'O nome deverá ter 9  caracteres').isLength({max: 9});
-	//request.checkBody('email', 'O email inserido não é válido').isEmail({email});
+	request.checkBody('name', 'O nome deve ter entre 1 e 50  caracteres').isAlpha();
+
+	request.checkBody('email', 'O email inserido não é válido').isEmail();
+	//request.checkBody('telefone', 'O numero de telefone introduzido não é válido').isMobilePhone({locale: "any"});
+	request.checkBody('nif', 'O NIF introduzido não é valido').isNumeric().isLength({min: 9, max: 9});
+	request.checkBody('photo', 'A foto deve ser introduzida via URL').isURL();
 	var errors = request.validationErrors();	
 	if (errors) {
 		response.render('admin/registar-colaborador', {

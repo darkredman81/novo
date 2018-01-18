@@ -41,6 +41,8 @@ router.get('/create', function(request, response) {
 });
 
 router.post('/create', function(request, response) {
+	request.checkBody('nome', 'O nome deve ter entre 1 e 50  caracteres').isAlpha();
+
 	var errors = request.validationErrors();	
 	if (errors) {
 		response.render('admin/registar-sessao', {

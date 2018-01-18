@@ -22,8 +22,9 @@ router.get('/create', function(request, response) {
 });
 
 router.post('/create', function(request, response) {
-	//request.checkBody('patrocinador', 'O Patrocinador deve ter entre 5 e 10  caracteres').isLength({min: 5, max: 10});
-	request.checkBody('montante', 'O montante não inserido não é válido').isValue({min: 1});
+	request.checkBody('Patrocinador', 'O Patrocinador deve ter entre 5 e 10  caracteres').isAlphanumeric();
+	request.checkBody('montante', 'O montante não inserido não é válido').isNumeric().isCurrency({allow_negatives: false});
+	request.checkBody('urllogo', 'Introduza um URL válido').isURL();
 	var errors = request.validationErrors();	
 	if (errors) {
 		response.render('admin/registar-patrocinio', {
