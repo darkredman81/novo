@@ -9,7 +9,7 @@
 
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
-    <li><a href="/patrocinios">Home</a></li>
+    <li><a href="/speakers">Home</a></li>
     <li class="active">Speakers</li>
 </ul>
 <!-- END BREADCRUMB -->
@@ -29,7 +29,7 @@
             <!-- START JQUERY VALIDATION PLUGIN -->
             <div class="block">
                 <h4>Modificar dados</h4>
-                <form id="jvalidate" role="form" class="form-horizontal" action="/patrocinios/<%= (isNew) ? 'create' : patrocinios.Patrocinador %>"   method="post"  name="form">
+                <form id="jvalidate" role="form" class="form-horizontal" action="/speakers/<%= (isNew) ? 'create' : speakers.idSPKR %>"   method="post"  name="form">
                     <div class="panel-body">
                         <div class="form-group">
                             <label class="col-md-3 control-label">Nome:</label>
