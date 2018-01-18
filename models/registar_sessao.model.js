@@ -7,7 +7,32 @@ module.exports = {
 		});
 	},
 
-read(nome, callback) {
+    pspeakers(callback) {
+        var sql = "SELECT * FROM webitclo_A15610.pspeakers";
+        global.connection.query(sql, function(error, rows, fields) {
+            if (error) throw error;
+            console.log(rows)
+            callback(rows);
+        });
+    },
+
+    dadosworkshop(callback) {
+        var sql = "SELECT * from  dadosworkshop";
+        global.connection.query(sql, function(error, rows, fields) {
+            if (error) throw error;
+            callback(rows[0]);
+        });
+    },
+
+	salas(callback) {
+        var sql = "SELECT * FROM webitclo_A15610.salas";
+        global.connection.query(sql, function(error, rows, fields) {
+            if (error) throw error;
+            callback(rows[0]);
+        });
+    },
+
+    read(nome, callback) {
 		var sql = "SELECT * from sessoes where idSessao=?";
 		global.connection.query(sql, [idSessao], function(error, rows, fields) {
 			if (error) throw error;
@@ -16,9 +41,9 @@ read(nome, callback) {
 	},	
 
 	create(data, callback) {
-		var sql = "INSERT INTO sessoes (nome, inicio, fim ) VALUES (?,?,?)";
+		var sql = "INSERT INTO sessoes (keyspeaker, dia, sala, descrissao ) VALUES (?,?,?,?)";
 		global.connection.query(
-			sql, [data.nome, data.inicio, data.fim], function(error, rows, fields) {
+			sql, [data.keyspeaker, data.dia, data.sala, data.descrissao ], function(error, rows, fields) {
 			if (error) throw error;
 			callback(rows[0]);			
 		});
@@ -26,7 +51,7 @@ read(nome, callback) {
 
 	update(nome, data, callback) {
 		console.log(data);
-		var sql = "UPDATE sessoes SET nome=?, inicio=?, fim=?WHERE idSessao=?";
+		var sql = "UPDATE sessoes SET nome=?, inicio=?, fim=? WHERE idSessao=?";
 		global.connection.query(
 			sql, [data.nome, data.inicio, data.fim], function(error, rows, fields) {
 			if (error) throw error;

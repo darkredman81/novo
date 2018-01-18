@@ -69,8 +69,8 @@ $(function(){
     Morris.Donut({
         element: 'dashboard-donut-1',
         data: [
-            {label: "Returned", value: 2513},
-            {label: "New", value: 764},
+            {label: "Patrocinios", value: 444 },
+            {label: "Bile", value: 764},
             {label: "Registred", value: 311}
         ],
         colors: ['#33414E', '#1caf9a', '#FEA223'],

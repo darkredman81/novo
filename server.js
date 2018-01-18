@@ -62,17 +62,6 @@ passport.deserializeUser(function(username, callback) {
 app.set('view engine', 'ejs');
 app.set('views','views');
 
-/*global.connection = mysql.createConnection({
-	host     : '185.206.147.44',
-	user     : 'pw2017',
-	password : 'pw2017',
-	database : 'webitclo_a156',
-}).on('enqueue', function (sequence) {
-	if ('Query' === sequence.constructor.name) {
-		console.log(sequence.sql);
-	}
-});*/
-
 global.connection = mysql.createConnection({
 	host     : 'webitcloud.net',
 	user     : 'webitclo_A156',
@@ -104,6 +93,7 @@ app.use('/colaboradores', express.static('_public'));
 app.use('/patrocinios', express.static('_public'));
 app.use('/sessoes', express.static('_public'));
 app.use('/speakers', express.static('_public'));
+app.use('/workshop', express.static('_public'));
 app.use(express.static(__dirname + '/_public'));
 
 
@@ -116,15 +106,16 @@ app.use('/logout', require('./controllers/logout.route'));
 app.use('/profile', require('./controllers/profile.route'));
 app.use('/admin', require('./controllers/admin.route'));
 app.use('/users', require('./controllers/user.route'));
-app.use('/workshop', require('./controllers/workshop.route'));
+app.use('/workshop', require('./controllers/workshop_edit.route'));
 app.use('/users-item', require('./controllers/user.route'));
 app.use('/patrocinios', require('./controllers/registar_patrocinio.route'));
 app.use('/speakers', require('./controllers/registar_speaker.route'));
 app.use('/sessoes', require('./controllers/registar_sessao.route'));
-//app.use('/404', require('./controllers/404.route'));
+app.use('/configuracoes', require('./controllers/configuracoes.route'));
+app.use('/404', require('./controllers/404.route'));
 
 //Back-end
 app.use('/card', require('./controllers/registar_card.route'));
 app.use('/colaboradores', require('./controllers/registar_colaborador.route'));
-app.use('/store', require('./controllers/store.route'));
-app.use('/bilheteira', require('./controllers/bilheteira.route'));
+//app.use('/store', require('./controllers/store.route'));
+//app.use('/bilheteira', require('./controllers/bilheteira.route'));

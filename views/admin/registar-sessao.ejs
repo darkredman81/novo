@@ -1,7 +1,7 @@
 <% include headerAdmin %>
 <% include navAdmin %>
 
-<!-- <h2><%= (isNew) ? '' : 'Registo de Novo Patrocinio ' %></h2> -->
+<!-- <h2><%= (isNew) ? '' : 'Registo de uma nova Sessão ' %></h2> -->
 <% for (var e of errors) { %>
 <div class="alert alert-danger"><%= e.msg %></div>
 <%}%>
@@ -29,36 +29,61 @@
             <!-- START JQUERY VALIDATION PLUGIN -->
             <div class="block">
                 <h4>Modificar dados</h4>
-                <form id="jvalidate" role="form" class="form-horizontal" action="/sessoes/<%= (isNew) ? 'create' : patrocinios.Patrocinador %>"   method="post"  name="form">
+                <form id="jvalidate" role="form" class="form-horizontal" action="/sessoes/<%= (isNew) ? 'create' : sessoes.idSessao %>"   method="post"  name="form">
                     <div class="panel-body">
                         <div class="form-group">
-                            <label class="col-md-3 control-label">Nome da sessão:</label>
+                            <label class="col-md-3 control-label">Nome da sessão</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="nome"  placeholder="Nome da Sessão!" required  >
-                                <span class="help-block">Nome da sessão</span>
+                                <input type="text" class="form-control" name="nome"  placeholder="Nome da Sessão!" value="<%=sessoes.descrissao%>" required  >
+                                <span class="help-block">Nome da sessão:</span>
                             </div>
                         </div>
+
                         <div class="form-group">
-                            <label class="col-md-3 control-label">Inicio da sessão:</label>
+                            <label class="col-md-3 control-label">Data do Workshop:</label>
                             <div class="col-md-9">
-                                <input name="inicio" id="montante" class="form-control"  type="datetime-local" required>
-                                <span class="help-block">Hora e data inicial da sessão</span>
+                                <input type="text" class="form-control" readonly value="<%= dadosworkshop.datainicio %>"/>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Fim da sessao:</label>
-                            <div class="col-md-9">
-                                <input type="datetime-local" class="form-control" name="fim"  />
-                                <span class="help-block">Hora e data final da sessão</span>
+
+                        <form role="form" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Dia da Sessão:</label>
+                                <div class="col-md-9">
+                                    <select class="form-control select" name="dia"  placeholder="Dia" value="<%=sessoes.dia%>" required  >
+                                        <% for(var i=1; i<dadosworkshop.totaldays+1; i++) { %><tbody>
+                                        <option><%= 'Dia ' + i %></option>
+                                        </tbody> <%} %>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+
+                        <form role="form" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Sala:</label>
+                                <div class="col-md-9">
+                                    <select class="form-control select" name="nome"  placeholder="Nome do Speaker!" required >
+                                        <% for(var i=0; i<salas.length; i++) { %><tbody>
+                                        <option><%= i %></option>
+                                        </tbody> <%} %>
+                                    </select><span class="help-block">Speaker da sessão</span>
+                                </div>
+                            </div>
+                        </form>
+
+                        <form role="form" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Speaker:</label>
+                                <div class="col-md-9">
+                                    <select class="form-control select" name="nome"  placeholder="Nome do Speaker!" required >
+                                    <% for (var s of pspeakers) { %><tbody>
+                                    <option><%= s.sname %></option>
+                                    </tbody> <%} %>
+                                </select><span class="help-block">Speaker da sessão</span>
                             </div>
                         </div>
-						<div class="form-group">
-                            <label class="col-md-3 control-label">Speaker:</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" name="urllogo"  />
-                                <span class="help-block">Speaker da sessão</span>
-                            </div>
-                        </div>
+                        </form>
                         </div>
                         <div class="btn-group pull-right">
                             <a href="/sessoes"><button class="btn btn-primary" type="button">Back</button></a>

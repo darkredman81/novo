@@ -1,60 +1,15 @@
-const model = require('../models/stats.model');
+const model = require('../models/dashboard.model');
 const usersModel = require('../models/user.model');
 const express = require('express');
 const router = express.Router();
 
 
-    router.get('/dashboard', function(request, response) {
-        model.nspeakers(function(totalspeakers) {
-            model.pspeakers(function(speakers) {
-                model.dadosspeakers(function(dadoss) {
-                    model.sponsor(function(sponsor) {
-                        model.workshop(function(workshop) {
-                            response.set("Content-Type", "text/html");
-                            response.render('admin/index', {
-                                speakers: speakers,
-                                totalspeakers: totalspeakers,
-                                dadoss: dadoss,
-                                sponsor: sponsor,
-                                workshop: workshop
-                            })
-                        })
-                    })
-                })
-            })
-        })
-    });
-
-
-
-
-router.get('/tables', global.secure(), function(request, response) {
-	response.set("Content-Type", "text/html");
-	response.render('admin/tables', {
-		user: request.user, errors: []
-	})		
-});
-
-router.get('/charts', global.secure(), function(request, response) {
-	response.set("Content-Type", "text/html");
-	response.render('admin/charts', {
-		user: request.user, errors: []
-	})		
-});
-
-router.get('/forms', global.secure(), function(request, response) {
-	response.set("Content-Type", "text/html");
-	response.render('admin/forms', {
-		user: request.user, errors: []
-	})		
-});
-
 router.get('/', global.secure(), function(request, response) {
-    model.workshop(function(workshop) {
+    model.dashboard(function(dashboard) {
 	response.set("Content-Type", "text/html");
 	response.render('admin/index', {
 		user: request.user, errors: [],
-        workshop: workshop
+        dashboard: dashboard
     })
 	})
 });

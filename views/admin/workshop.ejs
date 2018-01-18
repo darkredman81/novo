@@ -16,13 +16,19 @@
 
         </div>
         <div class="panel-body list-group">
+            <center>
             <a href="#" class="list-group-item"><span class="fa fa-pencil"></span> Nome: <%= u.nome %></a>
             <a href="#" class="list-group-item"><span class="fa fa-calendar"></span> From: <%= u.datainicio %></a>
             <a href="#" class="list-group-item"><span class="fa fa-calendar"></span> To: <%= u.datafim %></a>
             <a href="#" class="list-group-item"><span class="fa fa-building-o"></span> Local: <%= u.local %></a>
-            <a href="/workshop_edit/<%= u.idWorkshop %>" class="list-group-item"><span class="fa fa-pencil-square-o"></span> Edit</a>
+            </center>
         </div>
-        	<h3 class="panel-title"><a href="/workshop/workshop_edit/1"><button class="btn btn-danger">Editar Dados</button></a></h3>
+
+    </div>
+    <div class="col-md-12">
+        <center>
+    <h3 class="panel-default"><a href="/workshop/<%= u.idWorkshop %>"><button class="btn btn-danger">Editar Dados</button></a></h3>
+        </center>
     </div>
 </div>
 

@@ -17,3 +17,8 @@ SELECT tutilizador, tcolaborador, tspeaker, spatrocinios, sspeakers, scolaborado
 (select SUM(salario) sspeakers from speakers) t4,
 (select SUM(salario) scolaboradores from users) t5
 )
+
+
+                                        <% for(var i=1; i<dadosworkshop.totaldays+1; i++) { %><tbody>
+                                        <option><%= 'Dia ' + i %></option>
+                                        </tbody> <%} %>

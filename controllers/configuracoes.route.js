@@ -1,4 +1,4 @@
-const model = require('../models/workshop.model');
+const model = require('../models/configuracoes.model');
 const express = require('express');
 const router = express.Router();
 
@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/', function(request, response) {
     model.list(function(workshop) {
         response.set("Content-Type", "text/html");
-        response.render('admin/workshop', {
+        response.render('admin/configuracoes', {
             data: workshop
         })
     })

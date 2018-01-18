@@ -7,6 +7,23 @@ module.exports = {
 		});
 	},
 
+    dados(callback) {
+        var sql = 'SELECT * from dadosworkshop';
+        global.connection.query(sql, function(error, rows, fields) {
+            if (error) throw error;
+            console.log(rows);
+            callback(rows);
+        });
+    },
+
+    sessoes(callback) {
+        var sql = 'SELECT * from sessoes';
+        global.connection.query(sql, function(error, rows, fields){
+            if (error) throw error;
+            callback(rows);
+        });
+    },
+
 	read(nome, callback) {
 		var sql = "SELECT * from tipoBilhete where tipoBilhetes=?";
 		global.connection.query(sql, [nome], function(error, rows, fields) {
@@ -16,29 +33,11 @@ module.exports = {
 	},	
 
 	create(data, callback) {
-		var sql = "INSERT INTO bilhete (idparticipante, tipobilhete ) VALUES (?,?)";
+		var sql = "INSERT INTO bilheteira (userid, idsessao, tipo, qnt, soma, datacompra ) VALUES (?,?,?,?,?,?)";
 		global.connection.query(
-			sql, [data.idparticipante, data.tipobilhete], function(error, rows, fields) {
+			sql, [data.userid, data.idsessao, data.tipo, data.qnt, data.soma, data.datacompra ], function(error, rows, fields) {
 			if (error) throw error;
 			callback(rows[0]);			
-		});
-	},
-
-	/*update(nome, data, callback) {
-		console.log(data);
-		var sql = "UPDATE speakers SET nome=?, telefone=?, nif=?, cachet=?, email=?, dia_sessao=? WHERE nome=?"; 
-		global.connection.query(
-			sql, [data.nome, data.telefone, data.nif, data.cachet, data.email, data.dia_sessao, data.nome], function(error, rows, fields) {
-			if (error) throw error;
-			callback(rows[0]);			
-		});
-	},*/
-	
-	remove(nome, callback) {
-		var sql = "DELETE from bilhete WHERE nome=?";
-		global.connection.query(sql, [nome], function(error, rows, fields){
-			if (error) throw error;
-			callback(rows);
 		});
 	}
 };

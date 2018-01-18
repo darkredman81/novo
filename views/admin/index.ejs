@@ -3,7 +3,7 @@
 
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>                    
+                    <li><a href="/admin">Home</a></li>
                     <li class="active">Dashboard</li>
                 </ul>
                 <!-- END BREADCRUMB -->                       
@@ -14,85 +14,88 @@
                     <!-- START WIDGETS -->                    
                     <div class="row">
                         <div class="col-md-3">
-                            <% for (var w of workshop) { %><tbody>
+                            <% for (var w of dashboard) { %><tbody>
     		
                             
                             <!-- START WIDGET SLIDER -->
-                            <div class="widget widget-default widget-carousel">
+                            <div class="widget widget-warning widget-carousel">
                                 <div class="owl-carousel" id="owl-example">
                                     <div>                                    
-                                        <div class="widget-title">Total de Registos</div>
+                                        <div class="widget-title">Total de utilizadores</div>
                                         <div class="widget-subtitle plugin-date">00:00)</div>
-                                        <div class="widget-int">3,548</div>
+                                        <div class="widget-int"><%= w.tutilizador %></div>
                                     </div>
                                     <div>     
-                                        <div class="widget-title">Returned</div>
-                                        <div class="widget-subtitle">Visitors</div>
-                                        <div class="widget-int">1,695</div>
+                                        <div class="widget-title">Bilheteira</div>
+                                        <div class="widget-subtitle">Bilhetes vendidos</div>
+                                        <div class="widget-int">QNT</div>
                                     </div>
                                     <div>                                    
-                                        <div class="widget-title">New</div>
-                                        <div class="widget-subtitle">Visitors</div>
-                                        <div class="widget-int"><%= w.nome %></div>
+                                        <div class="widget-title">Bilheteira</div>
+                                        <div class="widget-subtitle">Receita bilhetes</div>
+                                        <div class="widget-int">Receita €</div>
                                     </div>
                                 </div>                            
                                 <div class="widget-controls">                                
                                     <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
                                 </div>                             
                             </div>
-                            </tbody> <%} %>
+
 
                             <!-- END WIDGET SLIDER -->
                             
                         </div>
                         <div class="col-md-3">
-                            
-                            <!-- START WIDGET MESSAGES -->
-                            <div class="widget widget-default widget-item-icon" onclick="location.href='pages-messages.html';">
-                                <div class="widget-item-left">
-                                    <span class="fa fa-envelope"></span>
-                                </div>                             
-                                <div class="widget-data">
-                                    <div class="widget-int num-count">eeee</div>
-                                    <div class="widget-title">New messages</div>
-                                    <div class="widget-subtitle">In your mailbox</div>
-                                </div>      
-                                <div class="widget-controls">                                
+                            <div class="widget widget-warning widget-carousel">
+                                <div class="owl-carousel" id="owl-example">
+                                    <div>
+                                        <div class="widget-int num-count"><%= w.tcolaborador %></div>
+                                        <div class="widget-title">Colaboradores</div>
+                                        <div class="widget-title">Pagos</div>
+                                    </div>
+                                    <div>
+                                        <div class="widget-int num-count"><%= w.tvoluntario %></div>
+                                        <div class="widget-title">Colaboradores</div>
+                                        <div class="widget-title">Voluntario</div>
+                                    </div>
+                                </div>
+                                <div class="widget-controls">
                                     <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
                                 </div>
-                            </div>                            
-                            <!-- END WIDGET MESSAGES -->
-                            
-                        </div>
-                        <div class="col-md-3">
-                            
-                            <!-- START WIDGET REGISTRED -->
-                            <div class="widget widget-default widget-item-icon" onclick="location.href='pages-address-book.html';">
-                                <div class="widget-item-left">
-                                    <span class="fa fa-user"></span>
-                                </div>
-                                <div class="widget-data">
-                                    <div class="widget-int num-count">yyyyyyyyy</div>
-                                    <div class="widget-title">Registred users</div>
-                                    <div class="widget-subtitle">On your website</div>
-                                </div>
-                                <div class="widget-controls">                                
-                                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
-                                </div>                            
                             </div>
-                            
-                            <!-- END WIDGET REGISTRED -->
-                            
+                            <!-- END WIDGET MESSAGES -->
                         </div>
+                            <!-- START WIDGET REGISTRED -->
                         <div class="col-md-3">
-                            
+                            <!-- START WIDGET MESSAGES -->
+                            <div class="widget widget-warning widget-item-icon">
+                                <div class="widget-item-left">
+                                    <span class="fa fa-bullhorn"></span>
+                                </div>
+                                <div class="widget-data">
+                                    <div class="widget-int num-count"><%= w.tspeaker %></div>
+                                    <div class="widget-title">Speakers registados</div>
+                                    <div class="widget-subtitle">No site Workevent</div>
+                                </div>
+                                <div class="widget-controls">
+                                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
+                                </div>
+                            </div>
+                            <!-- END WIDGET MESSAGES -->
+
+                        </div>
+                            <!-- END WIDGET REGISTRED -->
+                        </tbody> <%} %>
+
+                        <div class="col-md-3">
+
                             <!-- START WIDGET CLOCK -->
-                            <div class="widget widget-info widget-padding-sm">
-                                <div class="widget-big-int plugin-clock">00:00</div>                            
+                            <div class="widget widget-warning widget-padding-sm">
+                                <div class="widget-big-int plugin-clock">00:00</div>
                                 <div class="widget-subtitle plugin-date">Loading...</div>
-                                <div class="widget-controls">                                
+                                <div class="widget-controls">
                                     <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="left" title="Remove Widget"><span class="fa fa-times"></span></a>
-                                </div>                            
+                                </div>
                                 <div class="widget-buttons widget-c3">
                                     <div class="col">
                                         <a href="#"><span class="fa fa-clock-o"></span></a>
@@ -103,10 +106,10 @@
                                     <div class="col">
                                         <a href="#"><span class="fa fa-calendar"></span></a>
                                     </div>
-                                </div>                            
-                            </div>                        
+                                </div>
+                            </div>
                             <!-- END WIDGET CLOCK -->
-                            
+
                         </div>
                     </div>
                     <!-- END WIDGETS -->                    
@@ -118,8 +121,8 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <div class="panel-title-box">
-                                        <h3>Users Activity</h3>
-                                        <span>Users vs returning</span>
+                                        <h3>Vendas de Bilhetes</h3>
+                                        <span>Compra vs dias</span>
                                     </div>                                    
                                     <ul class="panel-controls" style="margin-top: 2px;">
                                         <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
@@ -138,7 +141,6 @@
                                 </div>                                    
                             </div>
                             <!-- END USERS ACTIVITY BLOCK -->
-                            
                         </div>
                         <div class="col-md-4">
                             
@@ -146,8 +148,8 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <div class="panel-title-box">
-                                        <h3>Visitors</h3>
-                                        <span>Visitors (last month)</span>
+                                        <h3>Balanço do Evento</h3>
+                                        <span>Gastos vs Receitas</span>
                                     </div>
                                     <ul class="panel-controls" style="margin-top: 2px;">
                                         <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
@@ -175,8 +177,8 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <div class="panel-title-box">
-                                        <h3>Projects</h3>
-                                        <span>Projects activity</span>
+                                        <h3>Sessoes</h3>
+                                        <span>Bilhetes vendidos</span>
                                     </div>                                    
                                     <ul class="panel-controls" style="margin-top: 2px;">
                                         <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
@@ -196,9 +198,9 @@
                                         <table class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th width="50%">Project</th>
+                                                    <th width="30%">Dia</th>
                                                     <th width="20%">Status</th>
-                                                    <th width="30%">Activity</th>
+                                                    <th width="50%">Bilhetes Restantes</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -229,24 +231,6 @@
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td><strong>Leo</strong></td>
-                                                    <td><span class="label label-success">Support</span></td>
-                                                    <td>
-                                                        <div class="progress progress-small progress-striped active">
-                                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">100%</div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>Virgo</strong></td>
-                                                    <td><span class="label label-success">Support</span></td>
-                                                    <td>
-                                                        <div class="progress progress-small progress-striped active">
-                                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">100%</div>
-                                                        </div>
-                                                    </td>
-                                                </tr>                                                
                                                 
                                             </tbody>
                                         </table>
