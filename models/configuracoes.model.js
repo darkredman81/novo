@@ -1,31 +1,20 @@
 module.exports = {
 
-    list(callback) {
-        var sql = 'SELECT * from workshop';
-        global.connection.query(sql, function(error, rows, fields){
+    config(callback) {
+        var sql = "SELECT t.tutilizador, t2.tcolaborador, t6.tvoluntario, t1.tspeaker, t3.spatrocinios, t4.sspeakers, t5.scolaboradores from\n" +
+            "((select count(iduser) tutilizador from users where type like 'utilizador') as t,\n" +
+            "(select count(iduser) tspeaker from users where type like 'speaker') as t1,\n" +
+            "(select count(iduser) tcolaborador from users where type not like 'utilizador') as t2,\n" +
+            "(select SUM(montante) spatrocinios from patrocinios) as  t3,\n" +
+            "(select SUM(salario) sspeakers from speakers)  as t4,\n" +
+            "(select SUM(salario) scolaboradores from users) as t5),\n" +
+            "(select count(iduser) tvoluntario from users where type like 'Voluntario') as t6";
+        global.connection.query(sql, function(error, rows, fields) {
             if (error) throw error;
+            console.log(rows);
             callback(rows);
         });
-    },
-
-    read(idWorkshop, callback) {
-        var sql = 'SELECT nome, datainicio, datafim , local from workshop where idWorkshop=?;';
-        global.connection.query(sql, [idWorkshop], function(error, rows, fields) {
-            if (error) throw error;
-            callback(rows[0]);
-        });
-    },
-
-
-    update(idWorkshop, data, callback) {
-        var sql = "UPDATE workshop SET nome=?, datainicio=?, datafim=?, local=? WHERE idWorkshop=?";
-
-        global.connection.query(
-            sql, [data.nome, data.datainicio, data.datafim, data.local, idWorkshop ], function(error, rows, fields) {
-                if (error) throw error;
-                callback(rows[0]);
-            });
-    },
+    }
 
 
 };
