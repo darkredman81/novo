@@ -181,25 +181,42 @@
 <!-- eventus -->
 <div id="sessoes" class=" parallax3" >
     <div class="container">
-        <h3 class="text-center">Sessões</h3>
-        <ul class="list-group">
+        <h3 class="text-center">Sessões
+        <ul class="list-group"></h3><% for (var e of sessoes) { %>
 
-            <% for (var w of workshop) { %><tbody>
-            <li class="list-group-item"> <span class="label label-danger">Sold Out!</span> <%= w.datainicio %> - <strong>Segurança para sistemas distribuidos em Scheme</strong> - Filipe de Sá-Soares <span class="badge"><%= w.maxbilhetes %>/<%= w.maxbilhetes %></span> </li>
-            <li class="list-group-item"> <span class="label label-danger">Sold Out!</span> 29 Janeiro - 17:23 - <strong>Segurança dos Magalhães em redes virtuais de Minecraft</strong> - guyfawkes020 <span class="badge">120/120</span></li>
-            <li class="list-group-item"> <span class="label label-warning ">Ultimos bilhetes!</span> 29 Janeiro - 19:00 - <strong>"Gringo: The Dangerous Life of John McAfee" Review and inspirational speech</strong> - John McAfee <span class="badge">75/80</span></li>
+        <% if (e.vendas == e.lotacaosala ) { %>
+
+        <li class="list-group-item"> <span class="label label-danger">Sold Out!</span> <%= e.inicio.toLocaleString() %> -
+            <strong><%= e.nome %> ( <%= e.descrissao %> )</strong> - <%= e.nomespeaker %>
+            <span class="badge"><%= e.vendas %> / <%= e.lotacaosala %></span>
+        </li>
+
+        <% } else { %>
+
+        <li class="list-group-item"> <span class="label label-info">Compra já!</span> <%= e.inicio.toLocaleString() %> -
+            <strong><%= e.nome %> ( <%= e.descrissao %> ) </strong> - <%= e.nomespeaker %>
+            <span class="badge"><%= e.vendas %> / <%= e.lotacaosala %></span>
+        </li>
+
+        <%} %>
+
+
         </ul>
+       <%} %>
+<div> <br></div>
 
-        <div class="row text-center">
+
+        <div class="row text-center"><% for (var e of sessoes) { %>
             <div class="col-sm-4">
                 <div class="thumbnail">
-                    <img src="dddd" alt="johnmcafee.jpg" width="400" height="300">
-                    <p><strong>"Gringo: The Dangerous Life of John McAfee"<br> Review and inspirational speech</strong></p>
-                    <p>29 Janeiro - 19:00 - John McAfee</p>
+                    <img src="<%= e.profilepic %>" alt="ssss" width="400" height="300">
+                    <p><strong><%= e.cargo %></strong></p>
+                    <p><%= e.inicio.toLocaleString() %> - <%= e.nomespeaker %></p>
                     <h3 class="panel-title"><a href="/bilheteira"><button class="btn">Comprar Bilhetes</button></a></h3>
                 </div>
-            </div>
-        </div></tbody> <%} %>
+            </div><%} %>
+
+    </div>
     </div>
 </div>
 
