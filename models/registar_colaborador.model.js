@@ -25,9 +25,9 @@ module.exports = {
 	},
 
 	update(idUser, data, callback) {
-		var sql = "UPDATE users SET name=?, email=?, morada=?, telefone=?, type=?, nif=?, photo=? WHERE idUser=?";
+		var sql = "UPDATE users SET name=?, email=?, morada=?, telefone=?, type=?, nif=?, photo=?, salario=? WHERE idUser=?";
 		global.connection.query(
-			sql, [data.name, data.email, data.morada, data.telefone, data.type, data.nif, data.photo, idUser], function(error, rows, fields) {
+			sql, [data.name, data.email, data.morada, data.telefone, data.type, data.nif, data.photo, data.salario, idUser], function(error, rows, fields) {
 			if (error) throw error;
 			callback(rows[0]);			
 		});
@@ -39,5 +39,13 @@ module.exports = {
 			if (error) throw error;
 			callback(rows);
 		});
-	}
+	},
+
+    types(callback) {
+        var sql = 'SELECT distinct type from users ';
+        global.connection.query(sql, function(error, rows, fields){
+            if (error) throw error;
+            callback(rows);
+        });
+    },
 };

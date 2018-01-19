@@ -1,4 +1,5 @@
 const model = require('../models/configuracoes.model');
+const colaborador = require('../models/registar_colaborador.model');
 const express = require('express');
 const router = express.Router();
 

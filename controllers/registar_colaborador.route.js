@@ -5,21 +5,27 @@ const router = express.Router();
 
 router.get('/', function(request, response) {
 	model.list(function(colaborador) {
+        model.types(function(types) {
 		response.set("Content-Type", "text/html");
 		response.render('admin/colaboradores-list', {
-			data: colaborador
+			data: colaborador,
+            types: types
+        })
 		})
 	})	
 });
 
 
 router.get('/create', function(request, response) {
+    model.types(function(types) {
 	response.set("Content-Type", "text/html");
 	response.render('admin/registar-colaborador', {
 		isNew: true,
 		colaborador: {},
+		types: types,
 		errors: []
 	})
+    })
 });
 
 router.post('/create', function(request, response) {
@@ -71,7 +77,7 @@ router.post('/:idUser', function(request, response) {
 	request.checkBody('telefone', 'O nome deverá ter 9  caracteres').isLength({max: 9});
 	request.checkBody('nif', 'O nome deverá ter 9  caracteres').isLength({max: 9});
 	var data = {
-	  'idUser': request.body.idUser,
+	  	'idUser': request.body.idUser,
 		'name': request.body.name,
 		'morada': request.body.morada,
 		'email': request.body.email,

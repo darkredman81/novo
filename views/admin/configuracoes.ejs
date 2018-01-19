@@ -34,11 +34,23 @@
                         <a href="/colaboradores"><span class="fa fa-book"></span></a>
                     </div>
                     <div class="col">
-                        <a href="#"><span class="fa fa-plus"></span></a>
+                        <a href="/colaboradores/create" class="trigger"><span class="fa fa-plus"></span></a>
                     </div>
                 </div>
             </div>
         </div>
+<script>
+        $(document).on('click', '.trigger', function (event) {
+        event.preventDefault();
+        $('#modal-iframe').iziModal('open')
+        });
+
+        $("#modal-iframe").iziModal({
+            iframe: true,
+            iframeHeight: 800,
+            iframeURL: "/colaboradores/create"
+        });
+</script>
 
         <div class="col-md-3">
             <div class="widget widget-info widget-padding-sm">
@@ -55,7 +67,7 @@
                         <a href="/speakers"><span class="fa fa-list-alt"></span></a>
                     </div>
                     <div class="col">
-                        <a href="#"><span class="fa fa-plus"></span></a>
+                        <a href="/speakers/create"><span class="fa fa-plus"></span></a>
                     </div>
                 </div>
             </div>
@@ -76,7 +88,7 @@
                         <a href="/patrocinios"><span class="fa fa-list-alt"></span></a>
                     </div>
                     <div class="col">
-                        <a href="#"><span class="fa fa-plus"></span></a>
+                        <a href="/patrocinios/create"><span class="fa fa-plus"></span></a>
                     </div>
                 </div>
             </div>
@@ -97,7 +109,7 @@
                         <a href="/sessoes"><span class="fa fa-list-alt"></span></a>
                     </div>
                     <div class="col">
-                        <a href="#"><span class="fa fa-plus"></span></a>
+                        <a href="/sessoes/create"><span class="fa fa-plus"></span></a>
                     </div>
                 </div>
             </div>
@@ -139,10 +151,10 @@
                 </div>
                 <div class="widget-buttons widget-c2">
                     <div class="col">
-                        <a href="#"><span class="fa fa-bullhorn"></span></a>
+                        <a href="#"><span class="fa fa-bullhorn" data-toggle="modal" data-target="#ordenadosS"></span></a>
                     </div>
                     <div class="col">
-                        <a href="#"><span class="fa fa-group"></span></a>
+                        <a href="#"><span class="fa fa-group" data-toggle="modal" data-target="#ordenadosC"></span></a>
                     </div>
                 </div>
             </div>
@@ -168,42 +180,164 @@
             </div>
         </div>
 
+
+
+
+
+
+
         <div class="col-md-3">
+            <% if (w.total > 0) { %>
             <div class="widget widget-info widget-padding-sm">
+                <% } else { %>
+                <div class="widget widget-danger widget-padding-sm">
+                    <%} %>
                 <div class="widget-item-left">
                     <span class="fa fa-info-circle"></span>
                 </div>
                 <div class="widget-data">
                     <div class="widget-title">Balanço</div>
-                    <div class="widget-subtitle">Total free space</div>
-                    <div class="widget-subtitle"><%= (w.scolaborador) +(w.tpatrocinios) - (w.sspeakers) %></div>
+                    <% if (w.total > 0) { %>
+                    <div class="widget-subtitle">Saldo Positivo</div>
+                    <% } else { %>
+                    <div class="widget-subtitle">Saldo Positivo</div>
+                    <%} %>
+                    <div class="widget-subtitle"><%= w.total %> €</div>
                 </div>
                 <div class="widget-buttons widget-c1">
                     <div class="col">
-                        <a href="#"><span class="fa fa-info"></span></a>
+                        <a href="#" data-toggle="modal" data-target="#info"><span class="fa fa-info"></span></a>
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
-    </tbody> <%} %>
+
+        <% if (w.total > 0) { %>
+        <div class="message-box message-box-success animated fadeIn" id="info">
+            <div class="mb-container">
+                <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-thumbs-o-up"></span> Resultados Financeiros:</div>
+                    <% } else { %>
+            <div class="message-box message-box-danger animated fadeIn" id="info">
+                <div class="mb-container">
+                    <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-thumbs-o-down"></span> Resultados Financeiros:</div>
+                    <%} %>
+                    <div class="mb-content">
+                        <p></p>
+                    </div>
+                    <div class="mb-footer">
+                        <button class="btn btn-default btn-lg pull-right mb-control-close">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <% } %>
 
 
+<div class="center"><button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary center-block">Click Me</button></div>
+
+                    <div class="modal fade" id="ordenadosC" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                    <h3 class="modal-title" id="lineModalLabel">Ordenado Colaborador</h3>
+                                </div>
+                                <div class="modal-body">
+
+                                    <!-- content goes here -->
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Ordenado atual:</label>
+                                            <p>Orednado </p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Novo Ordenado:</label>
+                                            <input type="number" class="form-control" id="salario" placeholder="salario">
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+                                        </div>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="ordenadosS" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                    <h3 class="modal-title" id="lineModalLabel">Ordenado Colaborador</h3>
+                                </div>
+                                <div class="modal-body">
+
+                                    <!-- content goes here -->
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Ordenado atual:</label>
+                                            <p>Orednado </p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Novo Ordenado:</label>
+                                            <input type="number" class="form-control" id="salario" placeholder="salario">
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+                                        </div>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+/*---------------------------------------------------------------------------------------------------------------------------*/
     <div class="col-lg-4">
         <div class="block">
             <div class="title"><strong>Modal Form</strong></div>
             <div class="block-body text-center">
                 <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Form in simple modal </button>
+
                 <!-- Modal-->
-                <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                <div id="myModal" tabindex="-1" role="dialog"   class="modal fade text-left">
                     <div role="document" class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Signin Modal</strong>
+                            <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Ordenados Colaborador</strong>
                                 <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                             </div>
                             <div class="modal-body">
-                                <p>Lorem ipsum dolor sit amet consectetur.</p>
+                                <p>Altereção do ordenado de todos os colaboradores</p>
                                 <form>
                                     <div class="form-group">
                                         <label>Email</label>
