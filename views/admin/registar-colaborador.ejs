@@ -29,12 +29,12 @@
 <!-- END PAGE TITLE -->
 
 <!-- PAGE CONTENT WRAPPER -->
-<div class="page-content-wrap">
-    <div class="col-md-4">
+<div class="page-content-wrap ">
+    <div class="col-md-4 ">
 
         <!-- START JQUERY VALIDATION PLUGIN -->
         <div class="block">
-            <div class="profile">
+            <div class="profile bg-info">
                 <div class="profile-image">
                     <img src="<%= colaborador.photo %>" />
                 </div>
@@ -42,7 +42,7 @@
 
                 <div class="profile-data">
                     <div class="profile-data-name"><%= colaborador.name%></div>
-                    <div class="profile-data-title"><%= colaborador.dateReg%></div>
+                    <div class="profile-data-name"><%= colaborador.dateReg%></div>
                 </div>
             </div>
 
@@ -55,7 +55,6 @@
         <div class="col-md-6">
             <!-- START JQUERY VALIDATION PLUGIN -->
             <div class="block">
-                <h4>Modificar dados</h4>
                 <form id="jvalidate" role="form" class="form-horizontal" action="/colaboradores/<%= (isNew) ? 'create' : colaborador.idUser%> " method="post"  id="contact_form" name="form">
                     <div class="panel-body">
                         <div class="form-group">
@@ -89,8 +88,15 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">Função:</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="type" value="<%= colaborador.type %>" <%if (colaborador.type=="admin") { %> readonly value="<%= colaborador.type %>" <% } %> />
-                                <span class="help-block">Função da lista</span>
+
+                                        <select class="form-control select" data-live-search="true" type="text" class="form-control" name="type" value="<%= colaborador.type %>">
+                                            <%if (colaborador.type=="admin") { %> readonly value="<%= colaborador.type %>" <% } %>
+                                            <% for (var i=0; i<colaborador.rowCnt; i++) { %>
+                                            <option><%= colaborador.type.getValues(i) %></option>
+                                            <%} %>
+                                        </select>
+
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -108,8 +114,9 @@
                             </div>
                         </div>
                         <div class="btn-group pull-right">
-                            <a href="/colaboradores"><button class="btn btn-primary" type="button">Back</button></a>
-                            <button class="btn btn-primary" type="submit">Submit</button>
+                            <a href="/colaboradores"><button class="btn bg-info" type="button">Back</button></a>
+
+                            <button class="btn bg-info" type="submit">Submit</button>
                         </div>
                     </div>
                 </form>

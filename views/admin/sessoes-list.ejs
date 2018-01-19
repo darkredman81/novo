@@ -34,8 +34,8 @@
 							<a  data-toggle="modal" data-target="#card" >
 							<td><%= u.nome %></a></td>
 							<td><%= u.name %></td>
-							<td><%= u.inicio %></td>
-							<td><%= u.fim %></td>
+							<td><%= u.inicio.toLocaleString() %></td>
+							<td><%= u.fim.c %></td>
 							<td><%= u.sala %></td></a>
 							<td><a href="/sessoes/<%= u.idSessao %>">Edit</a></td>
 						</tr><%} %>

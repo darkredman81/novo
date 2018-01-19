@@ -5,21 +5,27 @@ const router = express.Router();
 
 router.get('/', function(request, response) {
 	model.list(function(colaborador) {
+        model.types(function(types) {
 		response.set("Content-Type", "text/html");
 		response.render('admin/colaboradores-list', {
-			data: colaborador
+			data: colaborador,
+            types: types
+        })
 		})
 	})	
 });
 
 
 router.get('/create', function(request, response) {
+    model.types(function(types) {
 	response.set("Content-Type", "text/html");
 	response.render('admin/registar-colaborador', {
 		isNew: true,
 		colaborador: {},
+		types: types,
 		errors: []
 	})
+    })
 });
 
 router.post('/create', function(request, response) {
