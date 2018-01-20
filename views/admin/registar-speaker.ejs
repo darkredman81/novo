@@ -76,28 +76,28 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">Facebook:</label>
                             <div class="col-md-9">
-                                <input type="url"  name="fb" class="form-control" value="<%= speakers.photo %>" />
+                                <input type="url"  name="fb" class="form-control" value="<%= speakers.fb %>" />
                                 <span class="help-block">Conta do Facebook do Speaker</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label">Twitter Link:</label>
                             <div class="col-md-9">
-                                <input type="url"  name="twitter" class="form-control" value="<%= speakers.photo %>" />
+                                <input type="url"  name="twitter" class="form-control" value="<%= speakers.twitter %>" />
                                 <span class="help-block">Conta do Twitter do Speaker</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label">LinkedIn Link:</label>
                             <div class="col-md-9">
-                                <input type="url"  name="LinkedIn" class="form-control" value="<%= speakers.photo %>" />
+                                <input type="url"  name="LinkedIn" class="form-control" value="<%= speakers.LinkedIn %>" />
                                 <span class="help-block">Conta do LinkedIn do Speaker</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label">Cargo :</label>
                             <div class="col-md-9">
-                                <input type="text"  name="Cargo" class="form-control" value="<%= speakers.photo %>" />
+                                <input type="text"  name="Cargo" class="form-control" value="<%= speakers.Cargo %>" />
                                 <span class="help-block">Pequena descrição daquilo que faz</span>
                             </div>
                         </div>
@@ -133,20 +133,52 @@
     var jvalidate = $("#jvalidate").validate({
         ignore: [],
         rules: {
-            Patrocinador: {
+            name: {
                 required: true,
                 minlength: 2,
                 maxlength: 45
             },
-            montante: {
-                number: true,
-                min: 1,
-                max: 100000
+            email: {
+                email: true,
+				maxlength: 300
             },
-            urllogo: {
-                url: true,
-                maxlength: 300
-            }
+			nif: {
+				required: true,
+				digits: true,
+				minlength: 9,
+				maxlength: 9
+				
+			},
+			telefone: {
+				digits: true,
+				minlength: 9,
+				maxlength: 9
+			},
+			salario: {
+				required: true,
+				digits: true,
+				min: 1,
+				maxlength: 1000
+			},
+			photo: {
+				url: true,
+				maxlength: 300
+			},
+			fb: {
+				url: true,
+				maxlength: 300
+			},
+			twitter: {
+				url: true,
+				maxlength: 300
+			},
+			LinkedIn: {
+				url: true,
+				maxlength: 300
+			},
+			Cargo: {
+				maxlength: 90
+			}
         }
     });
 

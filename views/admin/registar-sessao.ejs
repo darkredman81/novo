@@ -43,7 +43,7 @@
                                 <label class="col-md-3 control-label">Dia da Sessão:</label>
                                 <div class="col-md-9">
                                     <select class="form-control select" name="dia" required  >
-                                        <% for (var i=1; i < dadosworkshop.totaldays+1; i++) { %><tbody>
+                                        <% for (var i=1 ; i < dadosworkshop.totaldays + 1 ; i++) { %><tbody>
                                         <option value="<%= i %>"><%= 'Dia ' + i %></option>
                                         </tbody> <%} %>
                                     </select>
@@ -52,6 +52,16 @@
                             </div>
 
                         <!-- FALTA ESCOLHER A SALA -->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Sala:</label>
+                                <div class="col-md-9">
+                                    <select class="form-control select" name="sala"  placeholder="Nome do Speaker!" required >
+                                        <% for (var t of tsalas) { %><tbody>
+                                        <option value="<%= t.idSala %>"><%= t.idSala %></option>
+                                        </tbody> <%} %>
+                                    </select><span class="help-block">Speaker da sessão</span>
+                                </div>
+                            </div>    
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Speaker:</label>

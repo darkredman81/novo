@@ -20,24 +20,21 @@ router.get('/', function(request, response) {
 
 
 router.get('/create', function(request, response) {
-    model.list(function(sessoes) {
         model.dadosworkshop(function(dadosworkshop) {
             model.pspeakers(function(pspeakers) {
-                model.totalsalas(function(totalsalas) {
+                model.tsalas(function(tsalas) {
 	response.set("Content-Type", "text/html");
 	response.render('admin/registar-sessao', {
 		isNew: true,
 		sessoes: {},
-		errors: [],
-        data: sessoes,
-        dadosworkshop: dadosworkshop,
+		dadosworkshop: dadosworkshop,
         pspeakers: pspeakers,
-        totalsalas: totalsalas,
+        tsalas: tsalas,
+		errors: [],
     })
     })
             })
         })
-    })
 });
 
 router.post('/create', function(request, response) {

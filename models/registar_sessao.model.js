@@ -24,8 +24,8 @@ module.exports = {
         });
     },
 
-	totalsalas(callback) {
-        var sql = "SELECT * FROM webitclo_A15610.tsalas;";
+	tsalas(callback) {
+        var sql = "SELECT * FROM webitclo_A15610.tsalas";
         global.connection.query(sql, function(error, rows, fields) {
             if (error) throw error;
             callback(rows[0]);
