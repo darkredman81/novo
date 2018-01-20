@@ -12,7 +12,7 @@ router.get('/', function(request, response) {
                 model.sponsor(function(sponsor) {
                     model.workshop(function(workshop) {
                         model.sessoes(function(sessoes) {
-<<<<<<< HEAD
+
                             model.bilhetes(function(bilhetes) {
                                 response.set("Content-Type", "text/html");
                                 response.render('index', {
@@ -23,8 +23,8 @@ router.get('/', function(request, response) {
                                     workshop: workshop,
                                     sessoes: sessoes,
                                     bilhetes: bilhetes
-                                })
-=======
+                                });
+
 
 		    response.set("Content-Type", "text/html");
 			response.render('index', {
@@ -36,7 +36,6 @@ router.get('/', function(request, response) {
             sessoes: sessoes,
 
 
->>>>>>> ef5a67aa7461fe7c2fd83bc6363b612ff1626774
                             })
 		})
         })
@@ -44,6 +43,7 @@ router.get('/', function(request, response) {
 		})
         })
 	})
+    })
 });
 
 
@@ -65,8 +65,6 @@ router.post('/buy', function(request, response) {
         });
     }
 });
-
-
 
 
 module.exports = router;
