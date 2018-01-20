@@ -51,7 +51,11 @@ router.post('/create', function(request, response) {
 		var data = {
 			'nome': request.body.nome,
 			'dia': request.body.dia,
-            'keyspeaker': request.body.keyspeaker,
+			'inicio': request.body.inicio,
+			'fim': request.body.fim,
+			'sala': request.body.sala,
+			'keyspeaker': request.body.keyspeaker,
+			
 		};
 		model.create(data, function(){
 			response.redirect('/sessoes');
@@ -61,24 +65,36 @@ router.post('/create', function(request, response) {
 
 router.get('/:idSessao', function(request, response) {
 	model.read(request.params.idSessao, function(sessoes) {
-		if (sessoes != undefined) {
-			response.set("Content-Type", "text/html");
-			response.render('admin/registar-sessao', {
-				isNew: false,
-				sessoes: sessoes,
-				errors: []
-			})		
-		}else{
-			response.status(404).end();
-		}
+		model.dadosworkshop(function(dadosworkshop) {
+            model.pspeakers(function(pspeakers) {
+                model.tsalas(function(tsalas) {
+					if (sessoes != undefined) {
+						response.set("Content-Type", "text/html");
+						response.render('admin/registar-sessao', {
+							isNew: false,
+							sessoes: sessoes,
+							dadosworkshop: dadosworkshop,
+        					pspeakers: pspeakers,
+        					tsalas: tsalas,
+							errors: []
+						})		
+					}else{
+						response.status(404).end();
+					}
+				})
+			})
+		})
 	})	
 });
 
 router.post('/:idSessao', function(request, response) {
 	var data = {
-		  'nome': request.body.nome,
-		  'inicio': request.body.inicio,
-		  'fim': request.body.fim,
+		'nome': request.body.nome,
+		'dia': request.body.dia,
+		'inicio': request.body.inicio,
+		'fim': request.body.fim,
+		'sala': request.body.sala,
+		'keyspeaker': request.body.keyspeaker,
 	};
 	model.update(request.params.idSessao, data, function(){
 		response.redirect('/sessoes');

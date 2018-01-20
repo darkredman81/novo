@@ -112,8 +112,8 @@
                 </div>
                 <div class="widget-data">
                     <div class="widget-title">Bilheteira</div>
-                    <div class="widget-subtitle">Total Vendas: </div>
-                    <div class="widget-subtitle">Total Caixa: </div>
+                    <div class="widget-subtitle">Total Vendas: <%= w.tbilheteira %></div>
+                    <div class="widget-subtitle">Total Caixa: <%= w.sbilheteira %></div>
                 </div>
                 <div class="widget-buttons widget-c3">
                     <div class="col">
@@ -139,11 +139,8 @@
                     <div class="widget-subtitle">Edição de ordenados</div>
                 </div>
                 <div class="widget-buttons widget-c2">
-                    <div class="col">
-                        <a href="#"><span class="fa fa-bullhorn" data-toggle="modal" data-target="#ordenadosS"></span></a>
-                    </div>
-                    <div class="col">
-                        <a href="#"><span class="fa fa-group" data-toggle="modal" data-target="#ordenadosC"></span></a>
+                    <div class="center">
+                        <a href="/ordenadosC.ejs"><span class="fa fa-group" data-toggle="tab" data-target="#ordenados-modal"></span></a>
                     </div>
                 </div>
             </div>
@@ -253,130 +250,11 @@
         <% } %>
 
 
-<div class="center"><button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary center-block">Click Me</button></div>
 
-                    <div class="modal fade" id="ordenadosC" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                    <h3 class="modal-title" id="lineModalLabel">Ordenado Colaborador</h3>
-                                </div>
-                                <div class="modal-body">
 
-                                    <!-- content goes here -->
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Ordenado atual:</label>
-                                            <p>Orednado </p>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">Novo Ordenado:</label>
-                                            <input type="number" class="form-control" id="salario" placeholder="salario">
-                                        </div>
-
-                                    </form>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <div class="btn-group btn-group-justified" role="group" aria-label="group button">
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
-                                        </div>
-                                        <div class="btn-group" role="group">
-                                            <button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">Save</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="modal fade" id="ordenados-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                        <% include ordenadosC %>
                     </div>
-
-                    <div class="modal fade" id="ordenadosS" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                    <h3 class="modal-title" id="lineModalLabel">Ordenado Colaborador</h3>
-                                </div>
-                                <div class="modal-body">
-
-                                    <!-- content goes here -->
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Ordenado atual:</label>
-                                            <p>Orednado </p>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">Novo Ordenado:</label>
-                                            <input type="number" class="form-control" id="salario" placeholder="salario">
-                                        </div>
-
-                                    </form>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <div class="btn-group btn-group-justified" role="group" aria-label="group button">
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
-                                        </div>
-                                        <div class="btn-group" role="group">
-                                            <button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">Save</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-
-
-
-
-
-/*---------------------------------------------------------------------------------------------------------------------------*/
-    <div class="col-lg-4">
-        <div class="block">
-            <div class="title"><strong>Modal Form</strong></div>
-            <div class="block-body text-center">
-                <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Form in simple modal </button>
-
-                <!-- Modal-->
-                <div id="myModals" tabindex="-1" role="dialog"   class="modal fade text-left">
-                    <div role="document" class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Ordenados Colaborador</strong>
-                                <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Altereção do ordenado de todos os colaboradores</p>
-                                <form>
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" placeholder="Email Address" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" placeholder="Password" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="submit" value="Signin" class="btn btn-primary">
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 </div>
