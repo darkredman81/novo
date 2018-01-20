@@ -32,7 +32,7 @@ router.get('/', function(request, response) {
         })
 		})
         })
-	
+
     })
 });
 
@@ -54,6 +54,8 @@ router.post('/buy', function(request, response) {
             response.redirect('/');
         });
     }
+    response.redirect('/');
+    console.log("Request Received");
 });
 
 
