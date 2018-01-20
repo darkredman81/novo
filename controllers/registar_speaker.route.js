@@ -39,7 +39,6 @@ router.post('/create', function(request, response) {
 			'nif': request.body.nif,
 			'salario': request.body.salario,
 			'email': request.body.email,
-			'photo': request.body.photo,
 		};
 		model.create(data, function(){
 			response.redirect('/speakers');
@@ -47,8 +46,8 @@ router.post('/create', function(request, response) {
 	}
 });
 
-router.get('/:idUser', function(request, response) {
-	model.read(request.params.idUser, function(speakers) {
+router.get('/:name', function(request, response) {
+	model.read(request.params.name, function(speakers) {
 		if (speakers != undefined) {
 			response.set("Content-Type", "text/html");
 			response.render('admin/registar-speaker', {
@@ -62,22 +61,20 @@ router.get('/:idUser', function(request, response) {
 	})	
 });
 
-router.post('/:idUser', function(request, response) {
+router.post('/:name', function(request, response) {
 	var data = {
-		'idUser': request.body.idUser,
 		'name': request.body.name,
-		'email': request.body.email,
 		'telefone': request.body.telefone,
 		'nif': request.body.nif,
 		'salario': request.body.salario,
-		'photo': request.body.photo,
+		'email': request.body.email,
 	};
-	model.update(request.params.idUser, data, function(){
+	model.update(request.params.name, data, function(){
 		response.redirect('/speakers');
 	});
 });
 
-router.get('/:idSPKR/delete', function(request, response){
+router.get('/:name/delete', function(request, response){
 	model.remove(request.params.idUser, function() {
 		response.redirect('/speakers');
 	})	

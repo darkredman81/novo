@@ -1,43 +1,44 @@
 module.exports = {
 	list(callback) {
-		var sql = "select idUser, name, email, telefone, nif, salario from users where type = 'Speaker'";
+		var sql = 'SELECT name, email, morada, nif, telefone, nif, b.salario, idsessao FROM sessoes a JOIN speakers b ON a.keyspeaker = b.idSPKR JOIN users c ON b.idSPKR = c.idUser;';
 		global.connection.query(sql, function(error, rows, fields){
 			if (error) throw error;
 			callback(rows);
 		});
 	},
 
-	read(idUser, callback) {
-		var sql = "SELECT * FROM users WHERE idUser = ?";
-		global.connection.query(sql, [idUser], function(error, rows, fields) {
+	read(name, callback) {
+		var sql = "SELECT name, email, morada, nif, telefone, nif, b.salario, idsessao FROM sessoes a JOIN speakers b ON a.keyspeaker = b.idSPKR JOIN users c ON b.idSPKR = c.idUser WHERE name = ?";
+		global.connection.query(sql, [name], function(error, rows, fields) {
 			if (error) throw error;
 			callback(rows[0]);			
 		});
 	},	
 
 	create(data, callback) {
-		var sql = "INSERT INTO users (name, email, nif, telefone, salario, photo, type ) VALUES (?,?,?,?,?,?, 'Speaker')";
+		var sql = "INSERT INTO users (name, email, nif, telefone, salario, type ) VALUES (?,?,?,?,?, 'Speaker')";
 		global.connection.query(
-			sql, [data.name, data.email, data.nif, data.telefone, data.salario, data.photo, data.type], function(error, rows, fields) {
+			sql, [data.name, data.email, data.nif, data.telefone, data.salario, data.type], function(error, rows, fields) {
 			if (error) throw error;
 			callback(rows[0]);			
 		});
 	},
 
-	update(idUser, data, callback) {
-		var sql = "UPDATE users SET name=?, email=?, telefone=?, nif=?, salario=?, photo=? WHERE idUser=?";
+	update(name, data, callback) {
+		console.log(data);
+		var sql = "UPDATE users SET name=?, email=?, nif=?, telefone=?, salario=? WHERE name=?";
 		global.connection.query(
-			sql, [data.name, data.email, data.telefone, data.nif, data.salario, data.photo, idUser], function(error, rows, fields) {
+			sql, [data.email, data.nif, data.telefone, data.salario, name], function(error, rows, fields) {
 			if (error) throw error;
 			callback(rows[0]);			
 		});
 	},
 	
-	/*remove(name, callback) {
+	remove(name, callback) {
 		var sql = "DELETE from users WHERE name=?";
 		global.connection.query(sql, [name], function(error, rows, fields){
 			if (error) throw error;
 			callback(rows);
 		});
-	}*/
+	}
 };

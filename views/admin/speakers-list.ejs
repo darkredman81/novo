@@ -22,22 +22,24 @@
 						<thead>
 						<tr>
 							<th>Nome</th>
-							<th>Email</th>
 							<th>Telefone</th>
 							<th>NIF</th>
-							<th>Cachê</th>
-							<th> </th>
+							<th>Cache</th>
+							<th>Email</th>
+							<th>Dia da sessao</th>
+							<th></th>
 						</tr>
 						</thead>
 						<tbody><% for (var u of data) { %>
 						<tr>
 							<a  data-toggle="modal" data-target="#card" >
 							<td><%= u.name %></a></td>
-							<td><%= u.email %></td>
 							<td><%= u.telefone %></td>
 							<td><%= u.nif %></td>
-							<td><%= u.salario %></td></a>
-							<td><a href="/speakers/<%= u.idUser %>">Edit</a></td>
+							<td><%= u.salario %></td>
+							<td><%= u.email %></td>
+							<td><%= u.idsessao %></td></a>
+							<td><a href="/speakers/<%= u.name %>">Edit</a></td>
 						</tr><%} %>
 						</tbody>
 					</table>

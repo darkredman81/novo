@@ -23,7 +23,7 @@ router.get('/create', function(request, response) {
     model.list(function(sessoes) {
         model.dadosworkshop(function(dadosworkshop) {
             model.pspeakers(function(pspeakers) {
-                model.totalsalas(function(totalsalas) {
+                model.salas(function(salas) {
 	response.set("Content-Type", "text/html");
 	response.render('admin/registar-sessao', {
 		isNew: true,
@@ -32,7 +32,7 @@ router.get('/create', function(request, response) {
         data: sessoes,
         dadosworkshop: dadosworkshop,
         pspeakers: pspeakers,
-        totalsalas: totalsalas,
+        salas: salas
     })
     })
             })
@@ -52,8 +52,9 @@ router.post('/create', function(request, response) {
 		});
 	}else{
 		var data = {
-			'nome': request.body.nome,
+			'nome': request.body.descrissao,
 			'dia': request.body.dia,
+			'sala': request.body.sala,
             'keyspeaker': request.body.keyspeaker,
 		};
 		model.create(data, function(){

@@ -1,6 +1,6 @@
 module.exports = {
 	list(callback) {
-		var sql = 'SELECT distinct s.nome, u.name, dia, inicio, fim, sala from sessoes s, users u where s.keyspeaker=u.iduser';
+		var sql = 'SELECT distinct ss.nome, u.name, inicio, fim, localizacao, sala from sessoes ss, speakers s, users u where ss.keyspeaker=u.iduser';
 		global.connection.query(sql, function(error, rows, fields){
 			if (error) throw error;
 			callback(rows);
@@ -24,8 +24,8 @@ module.exports = {
         });
     },
 
-	totalsalas(callback) {
-        var sql = "SELECT * FROM webitclo_A15610.tsalas;";
+	salas(callback) {
+        var sql = "SELECT * FROM webitclo_A15610.salas";
         global.connection.query(sql, function(error, rows, fields) {
             if (error) throw error;
             callback(rows[0]);
@@ -41,9 +41,9 @@ module.exports = {
 	},	
 
 	create(data, callback) {
-		var sql = "INSERT INTO sessoes (nome, dia, keyspeaker ) VALUES (?,?,?)";
+		var sql = "INSERT INTO sessoes (keyspeaker, dia, sala, descrissao ) VALUES (?,?,?,?)";
 		global.connection.query(
-			sql, [data.nome, data.dia, data.keyspeaker ], function(error, rows, fields) {
+			sql, [data.keyspeaker, data.dia, data.sala, data.descrissao ], function(error, rows, fields) {
 			if (error) throw error;
 			callback(rows[0]);			
 		});
