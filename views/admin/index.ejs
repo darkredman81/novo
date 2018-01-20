@@ -13,11 +13,10 @@
 
     <!-- START WIDGETS -->
     <div class="row">
+
         <div class="col-md-3">
             <% for (var w of dashboard) { %>
             <tbody>
-
-
             <!-- START WIDGET SLIDER -->
             <div class="widget widget-warning widget-carousel">
                 <div class="owl-carousel" id="owl-example">
@@ -47,6 +46,7 @@
             <!-- END WIDGET SLIDER -->
 
         </div>
+
         <div class="col-md-3">
             <div class="widget widget-warning widget-carousel">
                 <div class="owl-carousel" id="owl-example">
@@ -68,6 +68,7 @@
             </div>
             <!-- END WIDGET MESSAGES -->
         </div>
+
         <!-- START WIDGET REGISTRED -->
         <div class="col-md-3">
             <!-- START WIDGET MESSAGES -->
@@ -89,7 +90,7 @@
 
         </div>
         <!-- END WIDGET REGISTRED -->
-
+        <% } %>
 
         <div class="col-md-3">
 
@@ -114,45 +115,39 @@
                 </div>
             </div>
             <!-- END WIDGET CLOCK -->
-
         </div>
+
     </div>
     <!-- END WIDGETS -->
 
     <div class="row">
         <div class="col-md-4">
-            <% } %>
-            <!-- START USERS ACTIVITY BLOCK -->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="panel-title-box">
-                        <h3>Vendas de Bilhetes</h3>
-                        <span>Compra vs dias</span>
+                <!-- START VISITORS BLOCK -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title-box">
+                            <h3>Recursos Humanos</h3>
+                            <span> </span>
+                        </div>
+                        <ul class="panel-controls" style="margin-top: 2px;">
+                            <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
+                            <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-cog"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span> Collapse</a></li>
+                                    <li><a href="#" class="panel-remove"><span class="fa fa-times"></span> Remove</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="panel-controls" style="margin-top: 2px;">
-                        <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
-                        <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                                        class="fa fa-cog"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span>
-                                        Collapse</a></li>
-                                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span> Remove</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <div class="panel-body padding-0">
+                        <div class="chart-holder" id="dashboard-donut-1" style="height: 200px;"></div>
+                    </div>
                 </div>
-
-
-
-
-
-
-
+                <!-- END VISITORS BLOCK -->
             </div>
-            <!-- END USERS ACTIVITY BLOCK -->
-        </div>
+
         <div class="col-md-4">
 
             <!-- START VISITORS BLOCK -->
@@ -179,11 +174,10 @@
                     </ul>
                 </div>
                 <div class="panel-body padding-0">
-                    <div class="chart-holder" id="dashboard-donut-1" style="height: 200px;"></div>
+                    <div class="chart-holder" id="chartContainer" style="height: 200px;"></div>
                 </div>
             </div>
             <!-- END VISITORS BLOCK -->
-
         </div>
 
         <div class="col-md-4">
@@ -248,11 +242,7 @@
         <div class="col-md-8">
 
             <!-- START SALES BLOCK -->
-            <body>
-            <% for (var g of dashboard) { %>
-            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-            <% } %>
-            </body>
+
             <!-- END SALES BLOCK -->
 
         </div>
@@ -268,24 +258,47 @@
         </div>
 
     </div>
+
 </div>
 
 
 <!-- START DASHBOARD CHART -->
 
+<script>
+    window.onload = function() {
 
+        var chart = new CanvasJS.Chart("chartContainer", {
+            theme: "light2", // "light1", "light2", "dark1", "dark2"
+            exportEnabled: true,
+            animationEnabled: true,
+            title: {
+                text: ""
+            },
+            data: [{
+                type: "pie",
+                startAngle: 25,
+                toolTipContent: "<b>{label}</b>: {y}%",
+                showInLegend: "true",
+                legendText: "{label}",
+                indexLabelFontSize: 16,
+                indexLabel: "{label} - {y}€",
+                dataPoints: [
+                    { y: <%= w.spatrocinios %>, label: "Patrocinios" },
+                    { y: <%= w.scolaboradores %>, label: "Colaboradores" },
+                    { y: <%= w.sspeakers %>, label: "Speakers" },
+                    { y: <%= w.sbilheteira %>, label: "Bilheteira" },
+                    ]
+            }]
+        });
+        chart.render();
 
-
-
-    <script>
-        window.onload = function () {
             Morris.Donut({
                 element: 'dashboard-donut-1',
                 data: [
-                    {label: "Patrocinios", value: <%= w.spatrocinios %>},
-                    {label: "Bilheteira", value: <%= w.sbilheteira %>},
-                    {label: "Speakers", value: <%= w.sspeakers %> },
-                    {label: "Colaboradores", value: <%= w.scolaboradores %> }
+                    {label: "Utilizadores", value: <%= w.tutilizador %>},
+                    {label: "Speaker", value: <%= w.tspeaker %>},
+                    {label: "Colaborador Voluntario", value: <%= w.tvoluntario %> },
+                    {label: "Colaborador Pago", value: <%= w.tcolaborador %> }
                 ],
                 colors: ['#1a3daf', '#FEA223', '#db0b0a', '#92af5a'],
                 resize: true
@@ -293,16 +306,6 @@
         }
     </script>
 
-
-
-</div>
-<!-- END DASHBOARD CHART -->
-
-</div>
-<!-- END PAGE CONTENT WRAPPER -->
-</div>
-<!-- END PAGE CONTENT -->
-</div>
 
 <!-- END PAGE CONTAINER -->
 <% include footerAdmin %>

@@ -16,6 +16,23 @@ module.exports = {
             console.log(rows);
             callback(rows);
         });
+    },
+
+    list(callback) {
+        var sql = 'SELECT salario from users ';
+        global.connection.query(sql, function(error, rows, fields){
+            if (error) throw error;
+            callback(rows);
+        });
+    },
+
+    update(idUser, data, callback) {
+        var sql = "update users set salario = '50' where not  ((type = 'voluntario' ) or (not type = 'speaker') or (type = 'utilizador' ))";
+        global.connection.query(
+            sql, [ data.salario], function(error, rows, fields) {
+                if (error) throw error;
+                callback(rows[0]);
+            });
     }
 
 
