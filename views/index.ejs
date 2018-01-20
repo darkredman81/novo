@@ -18,11 +18,12 @@
                 <li><a href="#nossaEquipa">A nossa Equipa</a></li>
                 <li><a href="#oradores">Oradores</a></li>
                 <li><a href="#sessoes">Sessões</a></li>
+                <li><a href="#bilhetes">Bilhetes</a></li>
                 <li><a href="#parceiros">Parceiros</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#photos">Fotos</a></li>
                 <% if (isAuthenticated) { %>
-                <li role="presentation"><a href="/profile">Profile</a></li>
+                <li role="presentation"><a href="/profile">Dados do utilizador</a></li>
                 <% if (user.type === 'admin') {%>
                 <li role="presentation"><a href="/admin">Backend</a></li>
                 <% } %>
@@ -31,7 +32,7 @@
                     <% if (isAuthenticated) { %>
                     <a href="/logout">Logout</a>
                     <% } else { %>
-                    <a href="/login">Login</a>
+
                     <% } %>
                 </li>
             </ul>
@@ -165,10 +166,10 @@
                         <img src="<%= s.pspeakers %>" class="img-circle person center " alt="" >
                         <p><%= s.cargo %></p>
                         <p>
-                            <a href="<%= s.twitter %>"><i class="ion-social-twitter"></i></a>
-                            <a href="<%= s.fb %>"><i class="fa fa-facebook"></i></a>
-                            <a href="<%= s.linkedin %>"><i class="ion-social-linkedin-outline"></i></a>
-                            <a href="<%= s.googleplus %>"><i class="ion-social-googleplus"></i></a>
+                            <a target="_blank" href="<%= s.twitter %>"><i class="ion-social-twitter"></i></a>
+                            <a target="_blank" href="<%= s.fb %>"><i class="fa fa-facebook" ></i></a>
+                            <a target="_blank" href="<%= s.linkedin %>"><i class="ion-social-linkedin-outline"></i></a>
+                            <a target="_blank" href="<%= s.googleplus %>"><i class="ion-social-googleplus"></i></a>
                         </p>
                     </div>
                 </div> </tbody> <%} %>
@@ -181,45 +182,67 @@
 <!-- eventus -->
 <div id="sessoes" class=" parallax3" >
     <div class="container">
-        <h3 class="text-center">Sessões
-        <ul class="list-group"></h3><% for (var e of sessoes) { %>
+        <h3 class="text-center">Sessões</h3>
 
-        <% if (e.vendas == e.lotacaosala ) { %>
-
-        <li class="list-group-item"> <span class="label label-danger">Sold Out!</span> <%= e.inicio.toLocaleString() %> -
-            <strong><%= e.nome %> ( <%= e.descrissao %> )</strong> - <%= e.nomespeaker %>
-            <span class="badge"><%= e.vendas %> / <%= e.lotacaosala %></span>
-        </li>
-
-        <% } else { %>
-
-        <li class="list-group-item"> <span class="label label-info">Compra já!</span> <%= e.inicio.toLocaleString() %> -
-            <strong><%= e.nome %> ( <%= e.descrissao %> ) </strong> - <%= e.nomespeaker %>
-            <span class="badge"><%= e.vendas %> / <%= e.lotacaosala %></span>
-        </li>
-
-        <%} %>
-
-
-        </ul>
-       <%} %>
-<div> <br></div>
 
 
         <div class="row text-center"><% for (var e of sessoes) { %>
+
+
             <div class="col-sm-4">
                 <div class="thumbnail">
                     <img src="<%= e.profilepic %>" alt="ssss" width="400" height="300">
                     <p><strong><%= e.cargo %></strong></p>
                     <p><%= e.inicio.toLocaleString() %> - <%= e.nomespeaker %></p>
-                    <h3 class="panel-title"><a href="/bilheteira"><button class="btn">Comprar Bilhetes</button></a></h3>
+                    <p><strong><%= e.nome %></strong> - <%= e.descrissao %></p>
+                    <% if (!isAuthenticated) { %> <h3 class="panel-title"><a href="/bilheteira"><button class="btn">Comprar Bilhetes</button></a></h3><%} %>
                 </div>
             </div><%} %>
 
-    </div>
+
+
+
+
+          </div><br>
+        <div id="bilhetes" class="container"> <br> <h3 class="text-center">Bilhetes
+            <ul class="list-group"></h3><% for (var z of bilhetes) { %>
+            <% if (z.bilhetesRestantes < 1 ) { %>
+            <li class="list-group-item"> <span class="label label-danger">Sold Out!</span>  -
+                <strong>                Bilhete  <%= z.dia %>  </strong> - <%= z.preco %> € </a>
+                <span class="badge"><%= z.bilhetesVendidos %> comprados / <%= z.bilhetesRestantes %> disponiveis</span>
+            </li>
+            <% } else { %>
+            <li class="list-group-item"> <strong><span class="label label-info">Compra já!</span> -
+                <% if (isAuthenticated) { %> <span id="<%= z %>" style="cursor:alias;" onclick="makesomsmoke(this);window.open('https://www.paypal.com/cgi-bin/webscr?&amp;cmd=_xclick&amp;business=paulo-andrade@sapo.pt&amp;currency_code=EUR&amp;amount=<%= z.preco %>&amp;item_name=Pagamento de bilhete de <%= z.dia %> por parte de <%= user.name %>')
+   ">
+
+
+                  <%} %>
+                      Bilhete  <%= z.dia %>  </strong> - <%= z.preco %> € </span>
+                <% if (isAuthenticated) { %>
+                <script>
+                    function makesomsmoke(){
+                    $(this).on('click', function() {
+                        $.ajax({
+                            type: 'POST',
+                            url: '/buy',
+                            data: { bilhete: '<%= z.dia %>',
+                            preco:'<%= z.preco %>',
+                                user: '<%= user.username %>'
+                            },
+                            success: function() {
+                                alert('ok');
+                            }
+                        });
+                    });}
+                </script><%} %>
+                <span id="<%= z.dia %>" class="badge"><%= z.bilhetesVendidos %>  comprados / <%= z.bilhetesRestantes %> disponiveis</span>
+            </li>            <%} %>
+
+
+        </ul><%} %></div>
     </div>
 </div>
-
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
@@ -268,7 +291,7 @@
         <div class="partner partner"><% for (var s of sponsor) { %><tbody>
             <div class="row">
                 <div class="col-sm-3">
-                    <img src="<%= s.urllogo %>" class="partner-box" alt="" >
+                    <img style="height: 80px; width:auto" src="<%= s.urllogo %>" class="partner-box" alt="" >
                 </div></tbody> <%} %>
         </div>
     </div>
@@ -300,9 +323,8 @@
                         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
                              aria-labelledby="headingOne">
                             <div class="panel-body">
-                                <h3>Existem duas modalidades de bilhete:</h3>
-                                <p>Preço estudante : 10€</p>
-                                <p>Não estudante : 20€</p>
+                                <h3>Veja Bilhetes na secção das Sessões</h3>
+
                             </div>
                         </div>
                     </div>
