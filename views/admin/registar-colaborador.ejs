@@ -14,7 +14,6 @@
 <div class="alert alert-danger"><%= e.msg %></div>
 <%}%>
 
-
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
     <li><a href="/colaboradores">Home</a></li>
@@ -146,39 +145,7 @@
 </div>
 <!-- END MESSAGE BOX-->
 
-<!-- START PRELOADS -->
-<audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
-<audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
-<!-- END PRELOADS -->
 
-<!-- START SCRIPTS -->
-<!-- START PLUGINS -->
-<script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery/jquery-ui.min.js"></script>
-<script type="text/javascript" src="js/plugins/bootstrap/bootstrap.min.js"></script>
-<!-- END PLUGINS -->
-
-<!-- THIS PAGE PLUGINS -->
-<script type='text/javascript' src='js/plugins/icheck/icheck.min.js'></script>
-<script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
-
-<script type='text/javascript' src='js/plugins/bootstrap/bootstrap-datepicker.js'></script>
-<script type='text/javascript' src='js/plugins/bootstrap/bootstrap-select.js'></script>
-
-<script type='text/javascript' src='js/plugins/validationengine/languages/jquery.validationEngine-en.js'></script>
-<script type='text/javascript' src='js/plugins/validationengine/jquery.validationEngine.js'></script>
-
-<script type='text/javascript' src='js/plugins/jquery-validation/jquery.validate.js'></script>
-
-<script type='text/javascript' src='js/plugins/maskedinput/jquery.maskedinput.min.js'></script>
-<!-- END THIS PAGE PLUGINS -->
-
-<!-- START TEMPLATE -->
-<script type="text/javascript" src="js/settings.js"></script>
-
-<script type="text/javascript" src="js/plugins.js"></script>
-<script type="text/javascript" src="js/actions.js"></script>
-<!-- END TEMPLATE -->
 
 <script type="text/javascript">
     var jvalidate = $("#jvalidate").validate({
@@ -222,9 +189,7 @@
 </script>
 
 <!-- END SCRIPTS -->
-
-</body>
-</html>
+<% include footerAdmin %>
 
 
 
