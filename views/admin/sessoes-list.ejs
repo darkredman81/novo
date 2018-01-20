@@ -36,8 +36,8 @@
 							<td><%= u.nome %></a></td>
 							<td><%= u.name %></td>
 							<td><%= u.dia %></td>
-							<td><%= u.inicio.toLocaleString() %></td>
-							<td><%= u.fim.toLocaleString() %></td>
+							<td><%= u.inicio.toLocaleTimeString('pt-PT') %></td>
+							<td><%= u.fim.toLocaleTimeString('pt-PT') %></td>
 							<td><%= u.sala %></td></a>
 							<td><a href="/sessoes/<%= u.idSessao %>">Edit</a></td>
 						</tr><%} %>
