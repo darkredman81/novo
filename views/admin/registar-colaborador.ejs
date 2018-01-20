@@ -78,6 +78,7 @@
                                 <span class="help-block">Tamanho minimo = 8, Tamanho maximo = 100</span>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label class="col-md-3 control-label">Telefone:</label>
                             <div class="col-md-9">
@@ -85,17 +86,13 @@
                                 <span class="help-block">max size = 9</span>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label class="col-md-3 control-label">Função:</label>
                             <div class="col-md-9">
-
-                                        <select class="form-control select" data-live-search="true" type="text" class="form-control" name="type" value="<%= colaborador.type %>">
-                                            <%if (colaborador.type=="admin") { %> readonly value="<%= colaborador.type %>" <% } %>
-                                            <% for (var i=0; i<colaborador.rowCnt; i++) { %>
-                                            <option><%= colaborador.type.getValues(i) %></option>
-                                            <%} %>
-                                        </select>
-
+                                <input type="text" class="form-control" name="type" value="<%= colaborador.type %>" <%if (colaborador.type=="admin") { %> readonly value="<%= colaborador.type %>" <% } %> />
+                                    <div class="col-md-9">
+                                    <span class="help-block">Funçoes a desempenhar pelo coloborador</span>
                                 </div>
                             </div>
                         </div>
@@ -109,7 +106,7 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">Foto Link:</label>
                             <div class="col-md-9">
-                                <input type="url"  name="photo" class="form-control" value="<%= colaborador.photo %>"  />
+                                <input type="text"  name="photo" class="form-control" value="<%= colaborador.photo %>"  />
                                 <span class="help-block">required url</span>
                             </div>
                         </div>

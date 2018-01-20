@@ -39,18 +39,7 @@
                 </div>
             </div>
         </div>
-<script>
-        $(document).on('click', '.trigger', function (event) {
-        event.preventDefault();
-        $('#modal-iframe').iziModal('open')
-        });
 
-        $("#modal-iframe").iziModal({
-            iframe: true,
-            iframeHeight: 800,
-            iframeURL: "/colaboradores/create"
-        });
-</script>
 
         <div class="col-md-3">
             <div class="widget widget-info widget-padding-sm">
@@ -217,19 +206,45 @@
         <% if (w.total > 0) { %>
         <div class="message-box message-box-success animated fadeIn" id="info">
             <div class="mb-container">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                 <div class="mb-middle">
                     <div class="mb-title"><span class="fa fa-thumbs-o-up"></span> Resultados Financeiros:</div>
                     <% } else { %>
             <div class="message-box message-box-danger animated fadeIn" id="info">
                 <div class="mb-container">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">X</span><span class="sr-only">Close</span></button>
                     <div class="mb-middle">
                     <div class="mb-title"><span class="fa fa-thumbs-o-down"></span> Resultados Financeiros:</div>
                     <%} %>
                     <div class="mb-content">
-                        <p></p>
-                    </div>
-                    <div class="mb-footer">
-                        <button class="btn btn-default btn-lg pull-right mb-control-close">Close</button>
+                        <div>
+                            <table style="width:100%">
+                                <tr>
+                                    <th>Receita de Patrocinios:</th>
+                                    <td> <%= w.spatrocinios%> €</td>
+                                </tr>
+                                <tr>
+                                    <th>Receita de Bilheteira:</th>
+                                    <td><%= w.sbilheteira%> €</td>
+                                </tr>
+                                <tr>
+                                    <th>Valor de Salarios:</th>
+                                    <td><%= w.scolaboradores%> €</td>
+                                </tr>
+                                <tr>
+                                    <th>Valor de Speakers:</th>
+                                    <td><%= w.sspeakers%> €</td>
+                                </tr>
+                                <tr>
+                                    <th> </th>
+                                    <td> </td>
+                                </tr>
+                                <tr>
+                                    <th>Saldo do Evento:</th>
+                                    <td><%= w.total%> €</td>
+                                </tr>
+
+                            </table>
                     </div>
                 </div>
             </div>
@@ -330,7 +345,7 @@
                 <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Form in simple modal </button>
 
                 <!-- Modal-->
-                <div id="myModal" tabindex="-1" role="dialog"   class="modal fade text-left">
+                <div id="myModals" tabindex="-1" role="dialog"   class="modal fade text-left">
                     <div role="document" class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Ordenados Colaborador</strong>

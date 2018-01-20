@@ -41,11 +41,4 @@ module.exports = {
 		});
 	},
 
-    types(callback) {
-        var sql = 'SELECT distinct type from users ';
-        global.connection.query(sql, function(error, rows, fields){
-            if (error) throw error;
-            callback(rows);
-        });
-    },
 };

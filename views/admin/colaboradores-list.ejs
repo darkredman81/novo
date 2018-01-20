@@ -22,6 +22,7 @@
 					<table class="table datatable">
 						<thead>
 						<tr>
+							<th></th>
 							<th>Nome</th>
 							<th>Email</th>
 							<th>Morada</th>
@@ -34,6 +35,7 @@
 						<tbody><% for (var u of data) { %>
 						<tr>
 							<a  data-toggle="modal" data-target="#card" >
+							<td><a href="/colaboradores/<%= u.idUser %>"><img src="<%= u.photo %>" class="pull-left" alt="<%= u.name %>" width="50" height="50"/></td>
 							<td><%= u.name %></a></td>
 							<td><%= u.email %></td>
 							<td><%= u.morada %></td>

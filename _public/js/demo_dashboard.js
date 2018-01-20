@@ -66,16 +66,7 @@ $(function(){
     /* END Rickshaw dashboard chart */
     
     /* Donut dashboard chart */
-    Morris.Donut({
-        element: 'dashboard-donut-1',
-        data: [
-            {label: "Patrocinios", value: 444 },
-            {label: "Bile", value: 764},
-            {label: "Registred", value: 311}
-        ],
-        colors: ['#33414E', '#1caf9a', '#FEA223'],
-        resize: true
-    });
+
     /* END Donut dashboard chart */
 	
 	
