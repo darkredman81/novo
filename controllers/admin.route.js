@@ -6,10 +6,13 @@ const router = express.Router();
 
 router.get('/', global.secure(), function(request, response) {
     model.dashboard(function(dashboard) {
+        model.graph(function(graph) {
 	response.set("Content-Type", "text/html");
 	response.render('admin/index', {
 		user: request.user, errors: [],
-        dashboard: dashboard
+        dashboard: dashboard,
+        graph: graph
+    })
     })
 	})
 });

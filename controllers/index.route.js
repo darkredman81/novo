@@ -12,6 +12,7 @@ router.get('/', function(request, response) {
                 model.sponsor(function(sponsor) {
                     model.workshop(function(workshop) {
                         model.sessoes(function(sessoes) {
+<<<<<<< HEAD
                             model.bilhetes(function(bilhetes) {
                                 response.set("Content-Type", "text/html");
                                 response.render('index', {
@@ -23,6 +24,19 @@ router.get('/', function(request, response) {
                                     sessoes: sessoes,
                                     bilhetes: bilhetes
                                 })
+=======
+
+		    response.set("Content-Type", "text/html");
+			response.render('index', {
+			speakers: speakers,
+			totalspeakers: totalspeakers,
+            dadoss: dadoss,
+            sponsor: sponsor,
+            workshop: workshop,
+            sessoes: sessoes,
+
+
+>>>>>>> ef5a67aa7461fe7c2fd83bc6363b612ff1626774
                             })
 		})
         })
