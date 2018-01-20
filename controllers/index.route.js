@@ -26,23 +26,13 @@ router.get('/', function(request, response) {
                                 });
 
 
-		    response.set("Content-Type", "text/html");
-			response.render('index', {
-			speakers: speakers,
-			totalspeakers: totalspeakers,
-            dadoss: dadoss,
-            sponsor: sponsor,
-            workshop: workshop,
-            sessoes: sessoes,
-
-
                             })
 		})
         })
         })
 		})
         })
-	})
+	
     })
 });
 
