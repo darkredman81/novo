@@ -27,6 +27,16 @@ module.exports = {
     },
 
 
+    bilhetes(callback) {
+        var sql = 'SELECT * FROM webitclo_A15610.blilhetesfront';
+        global.connection.query(sql, function(error, rows, fields){
+            if (error) throw error;
+            callback(rows);
+        });
+    },
+
+
+
     dadosspeakers(callback) {
 		var sql = "SELECT * from webitclo_A15610.dadosspeakers";
 		global.connection.query(sql, function(error, rows, fields) {
