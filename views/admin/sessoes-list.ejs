@@ -23,10 +23,11 @@
 						<tr>
 							<th>Nome da sessão</th>
 							<th>Speaker</th>
+							<th>Dia</th>
 							<th>Inicio</th>
 							<th>Fim</th>
 							<th>Sala</th>
-							<th></th>
+							<th> </th>
 						</tr>
 						</thead>
 						<tbody><% for (var u of data) { %>
@@ -34,8 +35,9 @@
 							<a  data-toggle="modal" data-target="#card" >
 							<td><%= u.nome %></a></td>
 							<td><%= u.name %></td>
-							<td><%= u.inicio %></td>
-							<td><%= u.fim %></td>
+							<td><%= u.dia %></td>
+							<td><%= u.inicio.toLocaleString() %></td>
+							<td><%= u.fim.toLocaleString() %></td>
 							<td><%= u.sala %></td></a>
 							<td><a href="/sessoes/<%= u.idSessao %>">Edit</a></td>
 						</tr><%} %>
