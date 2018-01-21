@@ -106,6 +106,7 @@ app.use('/logout', require('./controllers/logout.route'));
 app.use('/profile', require('./controllers/profile.route'));
 app.use('/admin', require('./controllers/admin.route'));
 app.use('/users', require('./controllers/user.route'));
+app.use('/sessoes-tipo', require('./controllers/sessoes-tipo.route'));
 app.use('/workshop', require('./controllers/workshop_edit.route'));
 app.use('/users-item', require('./controllers/user.route'));
 app.use('/patrocinios', require('./controllers/registar_patrocinio.route'));

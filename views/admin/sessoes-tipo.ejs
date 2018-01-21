@@ -1,0 +1,94 @@
+<% include headerAdmin %>
+<% include navAdmin %>
+
+<br>
+<div class="page-title">
+	<h2><span class="fa fa-arrow-circle-o-left"></span> Registo Sessão por tipo de Bilhete</h2>
+</div>
+<!-- END PAGE TITLE -->
+
+<!-- PAGE CONTENT WRAPPER -->
+<div class="page-content-wrap">
+
+
+	<div class="row">
+		<div class="col-md-6">
+			<!-- START JQUERY VALIDATION PLUGIN -->
+			<div class="block">
+				<h4>Modificar dados</h4>
+				<form id="jvalidate" role="form" class="form-horizontal"    method="post"  name="form">
+					<div class="panel-body">
+						<div class="form-group">
+							<label class="col-md-3 control-label">Tipo de Bilhete:</label>
+							<div class="col-md-9">
+								<input type="text" class="form-control" name="tipobilhete"  placeholder="Dia 1" required  >
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label">Nome da sessão:</label>
+							<div class="col-md-9">
+								<input name="sessao" placeholder="Java" id="montante" class="form-control" type="text" required>
+
+							</div>
+						</div>
+
+					</div>
+					<div class="btn-group pull-right">
+						<button class="btn btn-primary" type="submit">Submeter</button>
+						<button class="btn btn-primary" name='delete' value='Delete'>Eliminar</button>
+					</div>
+
+			</form>
+			<!-- END JQUERY VALIDATION PLUGIN -->
+		</div>
+	</div>
+</div>
+<!-- END PAGE CONTENT -->
+</div>
+
+
+
+
+<div class="page-content-wrap">
+	<div class="row">
+		<div class="col-md-12">
+
+			<!-- START DEFAULT DATATABLE -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><a href=""></a></h3>
+					<ul class="panel-controls">
+						<li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+						<li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+						<li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+					</ul>
+				</div>
+				<div class="panel-body">
+					<table class="table datatable">
+									<thead>
+										<tr>
+											<th>Tipo de Bilhete(Dia/geral/lowcost)</th>
+											<th>Nome</th>
+											<th>Descrição</th>
+										</tr>
+									</thead>
+									<tbody>
+                            			<% for (var u of data) { %>
+										<tr>
+											<td><%= u.tipoBilhetes %></td>
+											<td><%= u.nome %></td>
+											<td><%= u.descrissao %></td>
+										</tr>
+                            			<%} %>
+									</tbody>
+								</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<% include footerAdmin %>
