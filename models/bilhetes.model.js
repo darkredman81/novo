@@ -7,6 +7,19 @@ module.exports = {
 		});
 	},
 
+    listabilhetes(callback) {
+        var sql = 'SELECT idbilhete,name, tipoBilhetes as tipo, datacompra FROM webitclo_A15610.bilhete b\n' +
+            'join tipobilhete c on b.tipobilhete = c.idTipoBilhete and estado = 3\n' +
+            'join users d on b.idparticipante = d.idUser';
+        global.connection.query(sql, function(error, rows, fields){
+            if (error) throw error;
+            callback(rows);
+        });
+    },
+
+
+
+
     dados(callback) {
         var sql = 'SELECT * from dadosworkshop';
         global.connection.query(sql, function(error, rows, fields) {
