@@ -103,6 +103,13 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-md-3 control-label">Salario:</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="salario" value="<%= colaborador.salario %>" <%if (colaborador.type=="Voluntario" || colaborador.type=="admin") { %> readonly <% } %> />
+                                <span class="help-block">Salário do colaborador</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-md-3 control-label">Foto Link:</label>
                             <div class="col-md-9">
                                 <input type="text"  name="photo" class="form-control" value="<%= colaborador.photo %>"  />

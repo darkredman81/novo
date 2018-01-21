@@ -16,9 +16,9 @@ module.exports = {
 	},	
 
 	create(data, callback) {
-		var sql = "INSERT INTO users ( name, email, morada, telefone, type, nif, photo) VALUES (?,?,?,?,?,?,?)";
+		var sql = "INSERT INTO users ( name, email, morada, telefone, type, nif, salario, photo) VALUES (?,?,?,?,?,?,?,?)";
 		global.connection.query(
-			sql, [data.name, data.email, data.morada, data.telefone, data.type, data.nif, data.photo ], function(error, rows, fields) {
+			sql, [data.name, data.email, data.morada, data.telefone, data.type, data.nif, data.salario, data.photo ], function(error, rows, fields) {
 			if (error) throw error;
 			callback(rows[0]);			
 		});
