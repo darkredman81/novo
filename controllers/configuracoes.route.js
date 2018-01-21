@@ -10,8 +10,8 @@ router.get('/', global.secure(), function(request, response) {
         response.set("Content-Type", "text/html");
         response.render('admin/configuracoes', {
             config: config,
-            data: colaborador
-        })
+            data: colaborador,
+            })
         })
     })
 });

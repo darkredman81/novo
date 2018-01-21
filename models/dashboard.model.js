@@ -19,7 +19,7 @@ module.exports = {
         });
     },
     graph(callback) {
-        var sql = "SELECT week(datacompra) as compra, count(idbilhete)as bilhetesVendidos, sum(b.preco) as money FROM  bilhete b\n" +
+        var sql = "SELECT week(datacompra) as week, count(idbilhete)as qnt, sum(b.preco) as money FROM  bilhete b \n" +
             "join tipobilhete c on b.tipobilhete = c.idTipoBilhete and estado = 3\n" +
             "Group by  week(datacompra)";
         global.connection.query(sql, function(error, rows, fields) {
