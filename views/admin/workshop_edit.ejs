@@ -34,14 +34,14 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">Data Inicio:</label>
 					<div class="col-md-9">
-						<input type="text" class="form-control datepicker" name="datainicio" id="datainicio"  value="<%= workshop.datainicio%>" required>
+						<input type="text" class="form-control datepicker" name="datainicio" id="datainicio"  value="<%= workshop.datainicio.toLocaleString()%>" required>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label class="col-md-3 control-label">Data Fim:</label>
 					<div class="col-md-9">
-						<input type="text" class="form-control datepicker" name="datafim" id="datafim" value="<%= workshop.datafim%>" required>
+						<input type="text" class="form-control datepicker" name="datafim" id="datafim" value="<%= workshop.datafim.toLocaleString()%>" required>
 					</div>
 				</div>
 

@@ -44,6 +44,7 @@ router.post('/create', function(request, response) {
 			'telefone': request.body.telefone,
 			'type': request.body.type,
 			'nif': request.body.nif,
+			'salario': request.body.salario,
             'photo': request.body.photo,
 		};
 		model.create(data, function(){
@@ -78,6 +79,7 @@ router.post('/:idUser', function(request, response) {
 		'telefone': request.body.telefone,
 		'type': request.body.type,
 		'nif': request.body.nif,
+		'salario': request.body.salario,
         'photo': request.body.photo,
 
 	};
