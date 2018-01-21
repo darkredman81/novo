@@ -11,7 +11,7 @@
 			<!-- START DEFAULT DATATABLE -->
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title"><a href="/colaboradores/create"><button class="btn btn-danger">Registar Colaborador</button></a></h3>
+					<h3 class="panel-title"><a href="/"><button class="btn btn-danger">Editar preço bilhetes</button></a></h3>
 					<ul class="panel-controls">
 						<li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
 						<li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
@@ -22,27 +22,22 @@
 					<table class="table datatable">
 						<thead>
 						<tr>
-							<th></th>
-							<th>Nome</th>
-							<th>Email</th>
-							<th>Morada</th>
-							<th>Telefone</th>
-							<th>Nif</th>
-							<th>Função</th>
-							<th></th>
+
+							<th>Numero do Bilhete</th>
+							<th>Nome do Comprador</th>
+							<th>Tipo Bilhete</th>
+							<th>Preço</th>
+							<th>Data de Compra</th>
+
 						</tr>
 						</thead>
-						<tbody><% for (var u of data) { %>
+						<tbody><% for (var u of listabilhetes) { %>
 						<tr>
-							<a  data-toggle="modal" data-target="#card" >
-							<td><a href="/colaboradores/<%= u.idUser %>"><img src="<%= u.photo %>" class="pull-left" alt="<%= u.name %>" width="50" height="50"/></td>
-							<td><%= u.name %></a></td>
-							<td><%= u.email %></td>
-							<td><%= u.morada %></td>
-							<td><%= u.telefone %></td>
-							<td><%= u.nif %></td>
-							<td><%= u.type %></td></a>
-							<td><a href="/colaboradores/<%= u.idUser %>">Edit</a></td>
+							<td><%= u.idbilhete %></td>
+							<td><%= u.name %></td>
+							<td><%= u.tipo %></td>
+							<td><%= u.preço %></td>
+							<td><%= u.datacompra %></td>
 						</tr><%} %>
 						</tbody>
 					</table>

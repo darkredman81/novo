@@ -119,3 +119,4 @@ app.use('/card', require('./controllers/registar_card.route'));
 app.use('/colaboradores', require('./controllers/registar_colaborador.route'));
 //app.use('/store', require('./controllers/store.route'));
 app.use('/bilheteira', require('./controllers/bilheteira.route'));
+app.use('/bilhetes', require('./controllers/bilhetes.route'));
