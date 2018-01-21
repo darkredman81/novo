@@ -45,9 +45,3 @@ $(".btn-pref .btn").click(function () {
     $(this).removeClass("btn-default").addClass("btn-primary");   
 });
 });
-                    <div class="form-group col-lg-6">
-        				<input type="text" name="" class="form-control" id="" value="" placeholder="From">
-    				</div>
-                    <div class="form-group col-lg-6">
-    					<input type="text" name="" class="form-control" id="" value="" placeholder="To">
-    				</div>

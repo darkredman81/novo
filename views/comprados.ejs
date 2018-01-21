@@ -1,0 +1,15 @@
+<% include partials/header %>
+
+<% if (isAuthenticated) { %>      <div id="bilhetes" class="container"> <br> <h3 class="text-center">Bilhetes Comprados
+        <ul class="list-group"></h3><% for (var x of bilhetescomprados) { %>
+        <strong>                Bilhete  <%= x.tipoBilhetes %>  </strong> -<%= x.idbilhete %>-<%= x.datacompra %> € </a>
+
+    </li>
+
+
+    </li>
+
+
+    </ul><%} %></div> <%} %>
+
+	

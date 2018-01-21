@@ -1,7 +1,9 @@
 const model = require('../models/stats.model');
 const modelcompra = require('../models/compra.model');
+const modedlcomprados = require('../models/comprados.model');
 const express = require('express');
 const router = express.Router();
+
 
 
 
@@ -14,6 +16,7 @@ router.get('/', function(request, response) {
                         model.sessoes(function(sessoes) {
 
                             model.bilhetes(function(bilhetes) {
+
                                 response.set("Content-Type", "text/html");
                                 response.render('index', {
                                     speakers: speakers,
@@ -22,7 +25,8 @@ router.get('/', function(request, response) {
                                     sponsor: sponsor,
                                     workshop: workshop,
                                     sessoes: sessoes,
-                                    bilhetes: bilhetes
+                                    bilhetes: bilhetes,
+
                                 });
 
 
@@ -54,9 +58,22 @@ router.post('/buy', function(request, response) {
             response.redirect('/');
         });
     }
-    response.redirect('/');
+
     console.log("Request Received");
 });
 
+
+router.get('/comprados', function(request, response) {
+
+        modedlcomprados.bilhetescomprados(function(bilhetescomprados) {
+            response.set("Content-Type", "text/html");
+            response.render('comprados', {
+                bilhetescomprados: bilhetescomprados
+            });
+
+
+    })
+
+});
 
 module.exports = router;
