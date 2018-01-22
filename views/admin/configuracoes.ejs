@@ -91,7 +91,8 @@
                 </div>
                 <div class="widget-data">
                     <div class="widget-title">Sessoes</div>
-                    <div class="widget-subtitle">Total free space</div>
+                    <div class="widget-subtitle">Numero de sessoes</div>
+                    <div class="widget-subtitle"><%= w.tsessoes %> Sessoes</div>
 
                 </div>
                 <div class="widget-buttons widget-c2">
@@ -113,17 +114,15 @@
                 <div class="widget-data">
                     <div class="widget-title">Bilheteira</div>
                     <div class="widget-subtitle">Total Vendas: <%= w.tbilheteira %></div>
-                    <div class="widget-subtitle">Total Caixa: <%= w.sbilheteira %></div>
+                    <div class="widget-subtitle">Total Caixa: <%= w.sbilheteira %> €</div>
                 </div>
-                <div class="widget-buttons widget-c3">
+                <div class="widget-buttons widget-c2">
                     <div class="col">
                         <a href="/bilhetes"><span class="fa fa-list-alt"></span></a>
                     </div>
+
                     <div class="col">
-                        <a href="#"><span class="fa fa-info"></span></a>
-                    </div>
-                    <div class="col">
-                        <a href="#"><span class="fa fa-edit"></span></a>
+                        <a href="/bilhetestipo"><span class="fa fa-edit"></span></a>
                     </div>
                 </div>
             </div>
@@ -138,7 +137,7 @@
                     <div class="widget-title">Ordenados</div>
                     <div class="widget-subtitle">Edição de ordenados</div>
                 </div>
-                <div class="widget-buttons widget-c2">
+                <div class="widget-buttons widget-c1">
                     <div class="center">
                         <a class="fa fa-group" data-toggle="tab" data-target="#ordenados"></a>
                     </div>
@@ -240,7 +239,10 @@
                 </div>
             </div>
         </div>
-            </div>   </div>   </div>   </div>
+            </div>
+                </div>
+            </div>
+        </div>
         <% } %>
 
         <!-- Modal -->
@@ -264,6 +266,9 @@
             <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
+
+
+
 
     </div>
 

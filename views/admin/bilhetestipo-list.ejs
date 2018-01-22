@@ -22,22 +22,14 @@
 					<table class="table datatable">
 						<thead>
 						<tr>
-
-							<th>Numero do Bilhete</th>
-							<th>Nome do Comprador</th>
-							<th>Tipo Bilhete</th>
+							<th>Tipo de Bilhete</th>
 							<th>Preço</th>
-							<th>Data de Compra</th>
-
 						</tr>
 						</thead>
-						<tbody><% for (var u of listabilhetes) { %>
+						<tbody><% for (var u of listatipo) { %>
 						<tr>
-							<td><%= u.idbilhete %></td>
-							<td><%= u.name %></td>
-							<td><%= u.tipo %></td>
-							<td><%= u.preco %> €</td>
-							<td><%= u.datacompra.toLocaleString() %></td>
+							<td><%= u.tipoBilhetes %></td>
+							<td><a href="/bilhetestipo/<%= u.idTipoBilhete %> "><%= u.preco %> €</a></td>
 						</tr><%} %>
 						</tbody>
 					</table>

@@ -7,14 +7,34 @@ module.exports = {
 		});
 	},
 
+
+
     listabilhetes(callback) {
-        var sql = 'SELECT idbilhete,name, tipoBilhetes as tipo, datacompra FROM webitclo_A15610.bilhete b\n' +
-            'join tipobilhete c on b.tipobilhete = c.idTipoBilhete and estado = 3\n' +
-            'join users d on b.idparticipante = d.idUser';
+        var sql = 'SELECT idbilhete,name, tipoBilhetes as tipo, b.preco, datacompra FROM webitclo_A15610.bilhete b\n' +
+            '            join tipobilhete c on b.tipobilhete = c.idTipoBilhete and estado = 3\n' +
+            '            join users d on b.idparticipante = d.idUser';
         global.connection.query(sql, function(error, rows, fields){
             if (error) throw error;
             callback(rows);
         });
+    },
+
+    listatipo(callback) {
+        var sql = 'SELECT * FROM webitclo_A15610.tipobilhete';
+        global.connection.query(sql, function(error, rows, fields){
+            if (error) throw error;
+            callback(rows);
+        });
+    },
+
+
+    update(idtipobilhete, data, callback) {
+        var sql = "UPDATE tipobilhete SET preco=? where idtipobilhete=?";
+        global.connection.query(
+            sql, [ data.preco, idtipobilhete], function(error, rows, fields) {
+                if (error) throw error;
+                callback(rows[0]);
+            });
     },
 
 

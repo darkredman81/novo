@@ -1,0 +1,86 @@
+<% include headerAdmin %>
+<% include navAdmin %>
+
+
+
+
+<!-- START BREADCRUMB -->
+<ul class="breadcrumb">
+    <li><a href="/bilhetestipo">Home</a></li>
+    <li class="active">Ediçao de preço</li>
+</ul>
+<!-- END BREADCRUMB -->
+
+<!-- PAGE TITLE -->
+<div class="page-title">
+    <h2><span class="fa fa-arrow-circle-o-left"></span> Editar o preço do bilhete</h2>
+</div>
+<!-- END PAGE TITLE -->
+
+<!-- PAGE CONTENT WRAPPER -->
+<div class="page-content-wrap">
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <!-- START JQUERY VALIDATION PLUGIN -->
+            <div class="block">
+                <h4>Modificar dados</h4>
+                <form id="jvalidate" role="form" class="form-horizontal" method="post"  name="form">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Dia do bilhete:</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="Patrocinador"  placeholder="Preço do bilhete" disabled=""  >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Preço do Bilhete:</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="Patrocinador"  placeholder="Preço do bilhete" disabled  >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Novo valor:</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="Patrocinador"  placeholder="Preço do bilhete" required  >
+                                <span class="help-block">Valor entre 0€ e 100€</span>
+                            </div>
+                        </div>
+
+                        </div>
+                        <div class="btn-group pull-right">
+                            <a href="/bilhetestipo-list"><button class="btn btn-primary" type="button">Back</button></a>
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- END JQUERY VALIDATION PLUGIN -->
+            </div>
+        </div>
+    </div>
+    <!-- END PAGE CONTENT -->
+</div>
+
+
+<script type="text/javascript">
+    var jvalidate = $("#jvalidate").validate({
+        ignore: [],
+        rules: {
+            preco: {
+                required: true,
+                min: 0,
+                max: 100
+            }
+        }
+    });
+
+</script>
+
+<% include footerAdmin %>
+
+
+
+
+
